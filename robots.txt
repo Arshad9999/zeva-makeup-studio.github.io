@@ -1,0 +1,3 @@
+User-agent: *
+Allow: /
+Sitemap: https://zeva-makeup-studio.github.io/sitemap.xml
