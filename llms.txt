@@ -1,0 +1,7 @@
+# Zeva Makeup Studio & Salon
+
+Women’s salon in Dubagga, Lucknow, led by Jeba Siddiqui. Bridal and party makeup, hair, skin care and salon services. Appointments are confirmed after availability is checked.
+
+- [Home](https://zeva-makeup-studio.github.io/)
+- [Services and regular prices](https://zeva-makeup-studio.github.io/services.html)
+- [Appointment request](https://docs.google.com/forms/d/e/1FAIpQLSdlE_HU9J3QaApyy7PPLVn61SA3UjmPYv734FfahQmQXUkTKg/viewform)
