@@ -94,20 +94,42 @@
   const qr=document.createElement('section'); qr.className='qr-panel'; qr.setAttribute('aria-label','WhatsApp booking QR code');
   qr.innerHTML='<strong>Scan to continue in WhatsApp</strong><p>Review the request in WhatsApp before sending. The code contains the details you enter; keep it private. Zeva confirms availability.</p><img alt="QR code for your WhatsApp appointment request" hidden><p class="qr-status" aria-live="polite">Choose a service to generate a QR code.</p><a class="qr-link" target="_blank" rel="noopener noreferrer" hidden>Open the same WhatsApp request ↗</a>';
   form.querySelector('.quick-form').append(qr);
-  function makeUrl() {
-    const data=new FormData(form); const lines=['Hello Zeva! I would like to request an appointment.', 'Services: '+plan.join(', ')];
+  const inlineForm=document.querySelector('#inline-booking-form');
+  let inlineChoices=[], inlineQr;
+  if (inlineForm) {
+    const picker=modal.querySelector('.service-picker').cloneNode(true);
+    picker.querySelector('.service-error').id='inline-service-error';
+    picker.querySelector('details').setAttribute('aria-describedby','inline-service-error');
+    inlineForm.querySelector('.inline-picker').append(picker);
+    inlineChoices=[...picker.querySelectorAll('input[name=services]')];
+    inlineQr=qr.cloneNode(true); inlineForm.append(inlineQr);
+    if ('IntersectionObserver' in window) new IntersectionObserver(entries => receipt.classList.toggle('receipt-away', entries[0].isIntersecting)).observe(inlineForm);
+    const today=new Date(); inlineForm.elements.date.min=[today.getFullYear(),String(today.getMonth()+1).padStart(2,'0'),String(today.getDate()).padStart(2,'0')].join('-');
+    picker.addEventListener('change', () => { plan=inlineChoices.filter(choice=>choice.checked).map(choice=>choice.value); renderPlan(); });
+    inlineForm.addEventListener('input', () => renderQr(inlineForm,inlineQr));
+    inlineForm.addEventListener('change', () => renderQr(inlineForm,inlineQr));
+    inlineForm.addEventListener('submit', event => {
+      event.preventDefault();
+      if (!inlineForm.reportValidity()) return;
+      if (!plan.length) { picker.querySelector('.service-error').textContent='Please select at least one service.'; picker.querySelector('details').open=true; picker.querySelector('summary').focus(); return; }
+      location.href=makeUrl(inlineForm);
+    });
+  }
+  function makeUrl(source=form) {
+    const data=new FormData(source); const lines=['Hello Zeva! I would like to request an appointment.', 'Services: '+plan.join(', ')];
     for (const [key,label] of [['name','Name'],['date','Preferred date'],['time','Preferred time'],['type','Appointment type'],['details','Additional details']]) { const value=String(data.get(key)||'').trim(); if(value) lines.push(label+': '+value); }
     return 'https://wa.me/918353909431?text='+encodeURIComponent(lines.join('\n'));
   }
   function renderPlan() {
     receipt.hidden=!plan.length; receipt.querySelector('.receipt-count').textContent=`${plan.length} selected`; receipt.querySelector('.receipt-items').textContent=plan.join(' · ');
-    document.querySelectorAll('.plan-add').forEach(button => { const selected=plan.includes(button.dataset.service); button.textContent=selected?'Added ✓':'Add to plan'; button.setAttribute('aria-pressed',String(selected)); });
+    document.querySelectorAll('.plan-add').forEach(button => { const selected=plan.includes(button.dataset.service); button.textContent=selected?'Added ✓':'Add to plan'; button.setAttribute('aria-pressed',String(selected)); button.setAttribute('aria-label', `${selected ? 'Remove' : 'Add'} ${button.dataset.service} ${selected ? 'from' : 'to'} your plan`); });
     choices.forEach(choice => { choice.checked=plan.includes(choice.value); }); modal.querySelector('.service-picker')?.dispatchEvent(new Event('selectionchange')); store.set('zeva-plan',plan); renderQr();
+    if (inlineForm) { inlineChoices.forEach(choice => { choice.checked=plan.includes(choice.value); }); const picker=inlineForm.querySelector('.service-picker'); picker.querySelector('summary').textContent=plan.length ? 'Selected: '+plan.join(', ') : 'Choose one or more services'; picker.querySelector('.service-error').textContent=''; renderQr(inlineForm,inlineQr); }
   }
-  function renderQr() {
-    const img=qr.querySelector('img'), status=qr.querySelector('.qr-status'), link=qr.querySelector('.qr-link');
+  function renderQr(source=form, panel=qr) {
+    const img=panel.querySelector('img'), status=panel.querySelector('.qr-status'), link=panel.querySelector('.qr-link');
     if (!plan.length) { img.hidden=true; link.hidden=true; status.textContent='Choose a service to generate a QR code.'; return; }
-    const url=makeUrl(); link.href=url; link.hidden=false;
+    const url=makeUrl(source); link.href=url; link.hidden=false;
     try { const code=qrcode(0,'M'); code.addData(url); code.make(); img.src=code.createDataURL(4,16); img.hidden=false; status.textContent='Your selected services and entered details are included.'; }
     catch { img.hidden=true; status.textContent='This request is too long for a QR code. Use the WhatsApp link below or shorten the details.'; }
   }
@@ -116,6 +138,6 @@
   document.querySelectorAll('[data-open-booking][data-service]').forEach(button => button.addEventListener('click', () => { if (!plan.includes(button.dataset.service)) plan.push(button.dataset.service); renderPlan(); }));
   receipt.querySelector('.receipt-clear').addEventListener('click', () => { plan=[]; renderPlan(); });
   receipt.querySelector('.receipt-book').addEventListener('click', () => { if (!modal.open) { const first=document.querySelector('[data-open-booking]'); first.click(); } renderPlan(); });
-  form.addEventListener('input', renderQr); form.addEventListener('change', renderQr);
+  form.addEventListener('input', () => renderQr()); form.addEventListener('change', () => renderQr());
   renderPlan();
 })();
