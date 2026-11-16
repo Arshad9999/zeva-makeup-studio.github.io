@@ -49,7 +49,7 @@
   document.querySelectorAll('.category-nav a, .category-card[href^="#"]').forEach(link => link.addEventListener('click', () => chooseVibe('all')));
 
   const panels = document.createElement('section'); panels.className = 'app-panels';
-  panels.innerHTML = '<div class="interactive-shell"><p class="eyebrow ink">Your Zeva journal</p><h2>Make every visit yours.</h2><div class="panel-grid"><article class="app-panel"><h3>Digital visit card</h3><p>Keep your own record of visits on this device.</p><div class="stamp-row" aria-label="Visit marks"></div><p class="visit-status" aria-live="polite"></p><div class="panel-actions"><button class="app-button" type="button" data-visit="add">Mark a visit</button><button class="app-button" type="button" data-visit="undo">Undo last mark</button></div><p class="app-small">A personal tracker, not proof of a visit or a loyalty offer. Ask Zeva about current benefits.</p></article><article class="app-panel"><h3>Your beauty notes</h3><p>Keep notes from your experience in a private board on this device.</p><form class="note-form"><label for="zeva-note">Your note</label><textarea id="zeva-note" maxlength="280" required placeholder="What would you like to remember?"></textarea><button class="app-button" type="submit">Save note</button></form><div class="notes-board" aria-live="polite"></div><p class="app-small">Notes are stored in this browser only and are not published reviews.</p></article></div></div>';
+  panels.innerHTML = '<div class="interactive-shell"><p class="eyebrow ink">Your Zeva journal</p><h2>Make every visit yours.</h2><div class="panel-grid"><article class="app-panel loyalty-card"><p class="eyebrow">Zeva Makeup Studio &amp; Salon</p><h3>Digital loyalty card</h3><p>Keep your own record of visits on this device.</p><div class="stamp-row" aria-label="Visit marks"></div><p class="visit-status" aria-live="polite"></p><div class="panel-actions"><button class="app-button" type="button" data-visit="add">Mark a visit</button><button class="app-button" type="button" data-visit="undo">Undo last mark</button></div><p class="app-small">Visit marks are self-reported and stored on this device. Zeva verifies visits, eligibility and any conditions before applying a reward.</p></article><article class="app-panel"><h3>Your beauty notes</h3><p>Keep notes from your experience in a private board on this device.</p><form class="note-form"><label for="zeva-note">Your note</label><textarea id="zeva-note" maxlength="280" required placeholder="What would you like to remember?"></textarea><button class="app-button" type="submit">Save note</button></form><div class="notes-board" aria-live="polite"></div><p class="app-small">Notes are stored in this browser only and are not published reviews.</p></article></div></div>';
   const reviews = document.createElement('section'); reviews.className = 'app-panels';
   reviews.innerHTML = '<div class="interactive-shell"><p class="eyebrow ink">From the community</p><h2>Client experiences.</h2><p class="reviews-empty">Zeva has not added published reviews here yet.</p><div class="review-board notes-board"></div></div>';
 
@@ -70,7 +70,19 @@
   const insertion = document.querySelector('.socials-section') || document.querySelector('.process-section') || document.querySelector('footer'); insertion.before(panels, reviews);
   let visits = Number(store.get('zeva-visits', 0)); if (!Number.isSafeInteger(visits) || visits < 0) visits = 0;
   const stamps = panels.querySelector('.stamp-row');
-  function renderVisits() { stamps.replaceChildren(); for (let i=0; i<5; i++) { const mark = document.createElement('span'); mark.className = 'stamp' + (i < visits % 5 || (visits > 0 && visits % 5 === 0) ? ' is-filled' : ''); mark.textContent = i < visits % 5 || (visits > 0 && visits % 5 === 0) ? '✦' : String(i+1); stamps.append(mark); } panels.querySelector('.visit-status').textContent = `${visits} ${visits === 1 ? 'visit' : 'visits'} marked on this device.`; store.set('zeva-visits', visits); }
+  function renderVisits() {
+    stamps.replaceChildren();
+    const marked = visits > 0 && visits % 10 === 0 ? 10 : visits % 10;
+    for (let i=0; i<10; i++) {
+      const mark = document.createElement('span');
+      mark.className = 'stamp' + (i < marked ? ' is-filled' : '') + (i === 4 || i === 9 ? ' stamp-reward' : '');
+      mark.textContent = i < marked ? '✦' : String(i+1);
+      mark.setAttribute('aria-label', `Visit ${i+1}${i < marked ? ', marked' : ', unmarked'}${i === 4 ? ', 50% off milestone' : i === 9 ? ', complimentary makeover milestone' : ''}`);
+      stamps.append(mark);
+    }
+    panels.querySelector('.visit-status').textContent = `${visits} ${visits === 1 ? 'visit' : 'visits'} marked on this device. ${marked} of 10 spaces marked on this card.`;
+    store.set('zeva-visits', visits);
+  }
   panels.addEventListener('click', event => { const button = event.target.closest('[data-visit]'); if (!button) return; visits = button.dataset.visit === 'add' ? Math.min(9999, visits + 1) : Math.max(0, visits - 1); renderVisits(); }); renderVisits();
   let notes = store.get('zeva-notes', []); if (!Array.isArray(notes)) notes = []; notes = notes.filter(note => typeof note === 'string').slice(0, 20);
   function renderNotes() { const board = panels.querySelector('.notes-board'); board.replaceChildren(); if (!notes.length) { const p=document.createElement('p'); p.className='empty-note'; p.textContent='Your notes will appear here.'; board.append(p); } notes.forEach((note, index) => { const card=document.createElement('article'); card.className='note-card'; const p=document.createElement('p'); p.textContent=note; const del=document.createElement('button'); del.type='button'; del.textContent='Remove'; del.setAttribute('aria-label', `Remove note ${index+1}`); del.addEventListener('click', () => { notes.splice(index,1); renderNotes(); }); card.append(p,del); board.append(card); }); store.set('zeva-notes',notes); }
