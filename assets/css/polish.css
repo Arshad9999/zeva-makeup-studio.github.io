@@ -1,0 +1,27 @@
+/* Homepage hero: one photographic canvas with a legible glass content panel. */
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:620px;padding:72px max(28px,calc((100vw - 1124px)/2));overflow:hidden}
+.hero-art{position:absolute;inset:0;z-index:-1;margin:0;min-height:0;display:block;background:#170d13}
+.hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:blur(1.4px);transform:scale(1.01);opacity:1}
+.hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,7,12,.72),rgba(12,7,12,.23) 72%,rgba(12,7,12,.1))}
+.hero-art figcaption{position:absolute;right:30px;bottom:22px;margin:0;color:#fff;z-index:1;text-shadow:0 1px 8px #000}
+.hero-copy{position:relative;z-index:1;width:min(600px,100%);max-width:none;margin:0;padding:clamp(26px,4vw,48px);background:rgba(29,17,25,.67);border:1px solid rgba(242,217,151,.35);border-radius:20px;box-shadow:0 24px 70px #10081066;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.hero h1{font-size:clamp(48px,6vw,76px)}
+.about-layout{gap:48px}.about-image,.studio-photo img{height:auto;aspect-ratio:auto;object-fit:initial;display:block;width:100%}
+.about-image{border-radius:14px}.studio-photo{border-radius:14px}
+/* Services: one aligned row per service, with price and actions together. */
+.menu-group{grid-template-columns:minmax(180px,260px) minmax(0,1fr);gap:36px;scroll-margin-top:165px}
+.service-rows{grid-template-columns:1fr;gap:10px}
+.service-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:15px 18px}
+.service-row dt{font-size:15px;line-height:1.35}
+.service-row dd{display:grid;grid-template-columns:minmax(76px,auto) 74px 112px;gap:8px;align-items:center}
+.service-row strong{text-align:right}.service-row .service-book,.service-row .plan-add{width:100%;min-height:44px;text-align:center;white-space:nowrap}
+.service-row .plan-add{border-radius:99px;padding:8px 12px}.service-row .plan-add[aria-pressed=true]{background:#741b34;color:#fff;border-color:#741b34}
+.category-nav{background:#fffaf8;border-bottom:1px solid #e4d4ce}.category-section,.menu-section,.faq{scroll-margin-top:165px}
+/* Keep muted copy and controls readable in both themes. */
+[data-theme=dark] .callout p,[data-theme=dark] .steps p,[data-theme=dark] .faq details p,[data-theme=dark] .site-link{color:#e5ccd6}
+[data-theme=dark] .text-link,[data-theme=dark] .callout a,[data-theme=dark] .site-link a{color:#f4b9c9}
+[data-theme=dark] .note-card p,[data-theme=dark] .note-card strong{color:#33232b}
+[data-theme=dark] .modal-shell{color:#211820}
+@media(max-width:900px){.menu-group{grid-template-columns:1fr;gap:18px}.menu-heading{max-width:650px}}
+@media(max-width:760px){.hero{min-height:760px;padding:320px 20px 42px;align-items:flex-end}.hero-copy{padding:28px 24px}.hero h1{font-size:clamp(45px,11vw,65px)}.hero-art{inset:0;margin:0;min-height:0}.hero-art img{object-position:70% center}.hero-art:after{background:linear-gradient(90deg,rgba(12,7,12,.68),rgba(12,7,12,.3))}.hero-art figcaption{right:18px;bottom:14px;font-size:9px}.about-layout,.studio-section{gap:28px}.about-image{max-width:none}.category-nav{top:72px}}
+@media(max-width:560px){.service-row{grid-template-columns:1fr;gap:10px}.service-row dd{grid-template-columns:minmax(60px,1fr) 74px 110px}.service-row strong{text-align:left}.menu-group{scroll-margin-top:150px}}
