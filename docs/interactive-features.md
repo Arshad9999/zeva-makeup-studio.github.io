@@ -1,0 +1,7 @@
+# Interactive experience
+
+The site remains static HTML, CSS and JavaScript. The occasion filter uses existing service names; prices and booking confirmation remain with Zeva. Service plans, visit marks, the theme and private notes are stored only in the visitor's browser and may disappear when browser data is cleared. Visit marks are self-reported; they are not a verified loyalty balance.
+
+`assets/data/business-content.json` is an owner-maintained content file. `availability` and `loyaltyOffer` may be strings or `null`; `reviews` is a list of objects with `quote` and `author` strings. Leave entries empty until Jeba has confirmed the facts and has permission to publish each review. The browser refreshes this file every five minutes, but it is not connected to an appointment system and does not prove real-time availability. Review the information regularly and remove it when stale.
+
+The QR code is generated locally using the MIT-licensed `qrcode-generator` library in `assets/js/qrcode.js`. It encodes a `wa.me` link with selected services and any details entered in the booking form. It does not submit a booking, and anyone who can see or scan the code can read those details. Large requests can exceed QR capacity; the site offers the WhatsApp link as a fallback.
