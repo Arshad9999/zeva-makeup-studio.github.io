@@ -1,0 +1,14 @@
+/* Shared category cards on the homepage and service menu. */
+.category-grid{display:flex;flex-wrap:wrap;justify-content:center;gap:20px}
+.category-card{flex:0 1 calc((100% - 40px)/3);min-width:0;background:#fffdf9;border:1px solid #eadbd3;border-radius:17px;overflow:hidden;box-shadow:0 8px 24px #4b1c2512;transition:transform .2s,box-shadow .2s;text-decoration:none;display:flex;flex-direction:column}
+.category-card img{display:block;width:100%;height:auto;aspect-ratio:3/2;object-fit:cover;object-position:var(--focal,center)}
+.category-card>div{padding:22px;display:flex;flex:1;flex-direction:column;align-items:start}
+.category-number{color:#8f1d38;font-size:12px;font-weight:700;letter-spacing:.12em}
+.category-card h3{font:25px/1.12 Georgia,serif;margin:10px 0}
+.category-card p{font-size:14px;color:#62525b;margin:0 0 12px}
+.category-card strong{font-size:14px;color:#72223a;margin-top:auto}
+.category-link{padding-top:12px;font-size:13px;font-weight:750;color:#8f1d38}
+.category-card:focus-visible{outline:3px solid #8f1d38;outline-offset:3px}
+@media(hover:hover){.category-card:hover{transform:translateY(-4px);box-shadow:0 16px 32px #4b1c2525}}
+@media(max-width:1024px){.category-card{flex-basis:calc((100% - 20px)/2)}}
+@media(max-width:600px){.category-card{flex-basis:100%}.category-card>div{padding:18px}}
