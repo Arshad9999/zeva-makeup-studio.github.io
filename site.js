@@ -101,6 +101,16 @@ document.addEventListener('DOMContentLoaded', () => {
           colorLight: '#ffffff',
           correctLevel: QRCode.CorrectLevel.M
         });
+
+        // QRCode library generates both a <canvas> and an <img>.
+        // Remove redundant canvas so only ONE crisp QR image is displayed.
+        setTimeout(() => {
+          const canvases = targetContainer.querySelectorAll('canvas');
+          const imgs = targetContainer.querySelectorAll('img');
+          if (imgs.length > 0 && canvases.length > 0) {
+            canvases.forEach(c => c.remove());
+          }
+        }, 20);
       } else {
         throw new Error('Local QRCode library not ready');
       }

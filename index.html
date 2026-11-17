@@ -104,10 +104,17 @@
   </header>
 
   <main>
-    <!-- Hero Section -->
-    <section class="hero">
+    <!-- Hero Section with Full-Cover Background & Mac Transparency Glass -->
+    <section class="hero" style="background-image: linear-gradient(135deg, rgba(16, 2, 6, 0.84) 0%, rgba(26, 4, 10, 0.70) 50%, rgba(14, 2, 5, 0.90) 100%), url('assets/images/hero/hero-bride.jpg');">
       <div class="hero-container">
-        <div class="hero-copy">
+        <div class="hero-copy mac-glass-panel">
+          <div class="mac-window-controls">
+            <span class="mac-dot close"></span>
+            <span class="mac-dot minimize"></span>
+            <span class="mac-dot maximize"></span>
+            <span class="mac-window-title">Zeva Makeup Studio &bull; Lucknow</span>
+          </div>
+
           <div class="hero-rating-pill">
             <span class="stars">★★★★★</span>
             <span>4.9/5 Rating · Dubagga, Lucknow · 150+ Happy Brides</span>
@@ -142,21 +149,36 @@
           </div>
         </div>
 
-        <div class="hero-art-wrapper">
-          <div class="hero-floating-card">
-            <p>"Jeba did my bridal makeup and it stayed flawless for 14 hours straight. Truly magical!"</p>
-            <cite>— Anam S., Lucknow Bride</cite>
-          </div>
-          <figure class="hero-frame">
-            <img src="assets/images/hero/hero-bride.jpg" alt="Luxury bridal makeup inspiration by Zeva Makeup Studio" width="600" height="750" fetchpriority="high">
-            <div class="hero-frame-badge">
-              <div>
-                <strong>Jeba Siddiqui Artistry</strong>
-                <span>Certified Bridal &amp; Salon Specialist</span>
-              </div>
-              <span style="color:var(--gold-300); font-weight:700;">Dubagga, LKO</span>
+        <div class="hero-sidebar-glass">
+          <div class="mac-glass-panel hero-side-card">
+            <div class="mac-window-controls">
+              <span class="mac-dot close"></span>
+              <span class="mac-dot minimize"></span>
+              <span class="mac-dot maximize"></span>
+              <span class="mac-window-title">Artist Credentials</span>
             </div>
-          </figure>
+
+            <div class="hero-artist-badge-inner">
+              <div class="artist-avatar-wrap">
+                <span class="artist-monogram">JS</span>
+              </div>
+              <div>
+                <h3 class="artist-title">Jeba Siddiqui</h3>
+                <p class="artist-role">Certified Bridal &amp; Salon Specialist</p>
+                <span class="artist-location">📍 Amrapali Yojana, Dubagga, Lucknow</span>
+              </div>
+            </div>
+
+            <div class="hero-quote-glass">
+              <p>&ldquo;Jeba did my bridal makeup and it stayed flawless for 14 hours straight. Truly magical!&rdquo;</p>
+              <cite>&mdash; Anam S., Lucknow Bride</cite>
+            </div>
+
+            <div class="hero-quick-status">
+              <span class="status-indicator live"></span>
+              <span>Appointments Available Today &bull; 10:30 AM &ndash; 7:30 PM</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>
