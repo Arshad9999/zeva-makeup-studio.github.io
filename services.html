@@ -306,7 +306,7 @@
           <p>Clean arch definition, forehead, chin, and smooth full-face threading.</p>
         </div>
         <dl class="service-rows">
-          <div class="service-row"><dt>Eyebrow Threading</dt><dd><strong>₹50</strong><button type="button" class="service-book" data-open-booking data-service="Threading (₹50)">Book</button></dd></div>
+          <div class="service-row"><dt>Eyebrow Threading</dt><dd><strong>₹50</strong><button type="button" class="service-book" data-open-booking data-service="Eyebrow Threading (₹50)">Book</button></dd></div>
           <div class="service-row"><dt>Forehead &amp; Chin</dt><dd><strong>₹30</strong><button type="button" class="service-book" data-open-booking data-service="Forehead & Chin (₹30)">Book</button></dd></div>
           <div class="service-row"><dt>Upper Lips</dt><dd><strong>₹30</strong><button type="button" class="service-book" data-open-booking data-service="Upper Lips (₹30)">Book</button></dd></div>
           <div class="service-row"><dt>Full Face Threading</dt><dd><strong>₹200</strong><button type="button" class="service-book" data-open-booking data-service="Full Face Threading (₹200)">Book</button></dd></div>
@@ -471,8 +471,15 @@
 
                 <div class="field-group">
           <span class="field-label">Services * <em class="field-hint">(select one or more)</em></span>
+          <div class="selected-services-box" aria-live="polite">
+            <div class="selected-services-header">
+              <span class="selected-services-heading">Selected (<span class="selected-count">0</span>):</span>
+              <button type="button" class="clear-selected-btn">Clear All</button>
+            </div>
+            <div class="selected-services-text">None selected yet. Choose from list below.</div>
+          </div>
           <details class="service-picker">
-            <summary>Choose one or more services</summary>
+            <summary>Choose one or more services ▾</summary>
             <div class="service-picker-grid">
               <strong class="picker-category">💄 Makeup</strong>
               <label class="picker-item"><input type="checkbox" name="services" value="Day Party Makeup (₹1,500)"> Day Party Makeup – ₹1,500</label>

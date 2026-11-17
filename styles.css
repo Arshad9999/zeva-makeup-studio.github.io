@@ -1057,6 +1057,90 @@ h2 {
   font-size: 11px;
 }
 
+/* ── Selected Services Real-Time Display Box ──────────────────────────── */
+.selected-services-box {
+  background: var(--surface-alt, rgba(122, 14, 36, 0.04));
+  border: 1.5px dashed var(--gold-400);
+  border-radius: var(--radius-sm);
+  padding: 10px 14px;
+  margin-bottom: 6px;
+  transition: all 0.25s ease;
+}
+
+[data-theme="dark"] .selected-services-box {
+  background: rgba(197, 160, 89, 0.06);
+  border-color: rgba(197, 160, 89, 0.35);
+}
+
+.selected-services-box.has-selection {
+  background: rgba(197, 160, 89, 0.12);
+  border-style: solid;
+  border-color: var(--gold-500);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.08);
+}
+
+[data-theme="dark"] .selected-services-box.has-selection {
+  background: rgba(197, 160, 89, 0.16);
+  border-color: var(--gold-400);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.25);
+}
+
+.selected-services-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.selected-services-heading {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: var(--gold-600);
+}
+
+[data-theme="dark"] .selected-services-heading {
+  color: var(--gold-300);
+}
+
+.clear-selected-btn {
+  background: transparent;
+  border: none;
+  color: var(--text-muted);
+  font-size: 11px;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 2px 6px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  transition: color 0.15s;
+  display: none;
+}
+
+.selected-services-box.has-selection .clear-selected-btn {
+  display: inline-block;
+}
+
+.clear-selected-btn:hover {
+  color: #ff5f56;
+}
+
+.selected-services-text {
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--text-primary);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.selected-services-box:not(.has-selection) .selected-services-text {
+  font-style: italic;
+  font-weight: 400;
+  color: var(--text-muted);
+  font-size: 12px;
+}
+
 .service-picker {
   border: 1.5px solid var(--border);
   border-radius: var(--radius-sm);

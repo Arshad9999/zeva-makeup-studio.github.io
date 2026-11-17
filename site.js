@@ -149,6 +149,8 @@ document.addEventListener('DOMContentLoaded', () => {
       if (!formElement.reportValidity()) return;
       const data = new FormData(formElement);
       const url = generateWhatsAppUrl(data);
+      // Order completed — clear selection as requested ("until order")
+      clearAllSelectedServices();
       window.open(url, '_blank');
     });
   }
@@ -183,43 +185,137 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
-  // Service Pre-selection Handler
-  function preSelectService(formEl, serviceName) {
-    if (!formEl || !serviceName) return;
-    // Try checkbox multi-select first
-    const checkbox = formEl.querySelector(`input[type="checkbox"][name="services"][value="${serviceName}"]`);
-    if (checkbox) {
-      checkbox.checked = true;
-      formEl.dispatchEvent(new Event('change'));
-      return;
-    }
-    // Partial match — try to find checkbox whose value starts with the service name
-    const allCheckboxes = formEl.querySelectorAll('input[type="checkbox"][name="services"]');
-    let matched = false;
-    allCheckboxes.forEach(cb => {
-      if (cb.value.startsWith(serviceName)) {
-        cb.checked = true;
-        matched = true;
-      }
-    });
-    if (matched) { formEl.dispatchEvent(new Event('change')); return; }
-    // Legacy single text input fallback
-    const textInput = formEl.querySelector('[name="service"]');
-    if (textInput) {
-      textInput.value = serviceName;
-      formEl.dispatchEvent(new Event('input'));
+  // ==========================================================================
+  // 5. Persistent Multi-Service State Manager (Real-Time Comma-Separated Sync)
+  // ==========================================================================
+  const SERVICE_STORAGE_KEY = 'zeva_selected_services';
+
+  function getStoredServices() {
+    try {
+      const raw = localStorage.getItem(SERVICE_STORAGE_KEY);
+      if (!raw) return [];
+      const parsed = JSON.parse(raw);
+      return Array.isArray(parsed) ? parsed.filter(Boolean) : [];
+    } catch (e) {
+      return [];
     }
   }
 
+  function setStoredServices(servicesArr) {
+    try {
+      const unique = Array.from(new Set(servicesArr.filter(Boolean)));
+      localStorage.setItem(SERVICE_STORAGE_KEY, JSON.stringify(unique));
+      return unique;
+    } catch (e) {
+      return servicesArr;
+    }
+  }
+
+  function addServiceToSelection(serviceName) {
+    if (!serviceName || serviceName === 'General Consultation') return;
+    const current = getStoredServices();
+    if (!current.includes(serviceName)) {
+      current.push(serviceName);
+      setStoredServices(current);
+      syncAllForms();
+    }
+  }
+
+  function clearAllSelectedServices() {
+    try {
+      localStorage.removeItem(SERVICE_STORAGE_KEY);
+    } catch (e) {}
+    syncAllForms();
+  }
+
+  function updateFormSelectionUI(formEl, selectedServices) {
+    if (!formEl) return;
+
+    // Check or uncheck all checkboxes in this form according to selectedServices
+    const checkboxes = formEl.querySelectorAll('input[type="checkbox"][name="services"]');
+    checkboxes.forEach(cb => {
+      cb.checked = selectedServices.includes(cb.value);
+    });
+
+    // Update real-time comma-separated display box
+    const box = formEl.querySelector('.selected-services-box');
+    if (box) {
+      const countEl = box.querySelector('.selected-count');
+      const textEl = box.querySelector('.selected-services-text');
+
+      if (countEl) countEl.textContent = selectedServices.length;
+
+      if (selectedServices.length > 0) {
+        box.classList.add('has-selection');
+        if (textEl) {
+          textEl.textContent = selectedServices.join(', ');
+        }
+      } else {
+        box.classList.remove('has-selection');
+        if (textEl) {
+          textEl.textContent = 'None selected yet. Choose from list below.';
+        }
+      }
+    }
+
+    // Update <details> <summary> with real-time comma-separated list
+    const summary = formEl.querySelector('.service-picker summary');
+    if (summary) {
+      if (selectedServices.length > 0) {
+        summary.textContent = `✓ Selected (${selectedServices.length}): ${selectedServices.join(', ')} ▾`;
+      } else {
+        summary.textContent = 'Choose one or more services ▾';
+      }
+    }
+
+    // Trigger form sync so WhatsApp URL and QR code update in real-time
+    formEl.dispatchEvent(new Event('input'));
+  }
+
+  function syncAllForms() {
+    const selected = getStoredServices();
+    const forms = document.querySelectorAll('form');
+    forms.forEach(form => {
+      if (form.querySelector('input[name="services"]')) {
+        updateFormSelectionUI(form, selected);
+      }
+    });
+  }
+
+  // Listen for checkbox toggle inside any form
+  document.querySelectorAll('form').forEach(form => {
+    form.addEventListener('change', e => {
+      if (e.target && e.target.name === 'services' && e.target.type === 'checkbox') {
+        const checkedValues = Array.from(
+          form.querySelectorAll('input[type="checkbox"][name="services"]:checked')
+        ).map(cb => cb.value);
+        setStoredServices(checkedValues);
+        syncAllForms();
+      }
+    });
+  });
+
+  // Clear button click listener
+  document.querySelectorAll('.clear-selected-btn').forEach(btn => {
+    btn.addEventListener('click', e => {
+      e.preventDefault();
+      e.stopPropagation();
+      clearAllSelectedServices();
+    });
+  });
+
+  // Service Pre-selection & Multi-Add Handler
   document.querySelectorAll('[data-service]').forEach(btn => {
     btn.addEventListener('click', () => {
       const serviceName = btn.getAttribute('data-service');
-      
-      // Update on-page form if exists
-      if (onPageForm) preSelectService(onPageForm, serviceName);
+      if (serviceName && serviceName !== 'General Consultation') {
+        // Resolve full checkbox value if button's data-service is partial
+        let fullValue = serviceName;
+        const match = document.querySelector(`input[name="services"][value*="${serviceName}"]`);
+        if (match) fullValue = match.value;
 
-      // Update modal form if exists
-      if (modalForm) preSelectService(modalForm, serviceName);
+        addServiceToSelection(fullValue);
+      }
 
       // If button has data-scroll-to-book, smooth scroll to on-page booking
       if (btn.hasAttribute('data-scroll-to-book')) {
@@ -240,6 +336,20 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   });
+
+  // Cross-page and tab synchronization
+  window.addEventListener('storage', e => {
+    if (e.key === SERVICE_STORAGE_KEY) {
+      syncAllForms();
+    }
+  });
+
+  window.addEventListener('pageshow', () => {
+    syncAllForms();
+  });
+
+  // Initial sync on page load (reflects on home screen & services modal)
+  syncAllForms();
 
   // Modal Open/Close Controls
   document.querySelectorAll('[data-open-booking]').forEach(btn => {
