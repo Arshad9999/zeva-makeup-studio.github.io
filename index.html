@@ -2,78 +2,766 @@
 <html lang="en">
 <head>
   <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="description" content="Bridal and party makeup, hair and skin services at Zeva Makeup Studio & Salon in Dubagga, Lucknow. Request an appointment.">
-  <title>Zeva Makeup Studio &amp; Salon | Dubagga, Lucknow</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Luxury bridal makeup, HD party looks, skin treatments and salon services at Zeva Makeup Studio & Salon in Dubagga, Lucknow. Led by Jeba Siddiqui. Book appointment.">
+  <title>Zeva Makeup Studio &amp; Salon | Luxury Bridal &amp; Beauty in Dubagga, Lucknow</title>
+  
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  
   <link rel="preload" as="image" href="assets/images/hero/hero-bride.jpg">
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="stylesheet" href="assets/css/media.css">
-  <link rel="stylesheet" href="assets/css/home.css"><link rel="stylesheet" href="assets/css/category-cards.css">
-<link rel="canonical" href="https://zeva-makeup-studio.github.io/">
+  <link rel="canonical" href="https://zeva-makeup-studio.github.io/">
   <link rel="icon" href="/favicon.svg" type="image/svg+xml">
+  
+  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Zeva Makeup Studio &amp; Salon | Dubagga, Lucknow">
-  <meta property="og:description" content="Bridal and party makeup, hair and skin services at Zeva Makeup Studio & Salon in Dubagga, Lucknow. Request an appointment.">
+  <meta property="og:title" content="Zeva Makeup Studio &amp; Salon | Luxury Bridal &amp; Beauty in Dubagga, Lucknow">
+  <meta property="og:description" content="Luxury bridal makeup, HD party looks, skin treatments and salon care in Dubagga, Lucknow. Certified artist Jeba Siddiqui. Book on WhatsApp.">
   <meta property="og:url" content="https://zeva-makeup-studio.github.io/">
   <meta property="og:image" content="https://zeva-makeup-studio.github.io/assets/images/hero/hero-bride.jpg">
+  
+  <!-- Twitter -->
   <meta name="twitter:card" content="summary_large_image">
-  <script type="application/ld+json">{"@context": "https://schema.org", "@type": "BeautySalon", "name": "Zeva Makeup Studio & Salon", "url": "https://zeva-makeup-studio.github.io/", "telephone": "+91-83539-09431", "address": {"@type": "PostalAddress", "streetAddress": "Amrapali Yojana, Dubagga", "addressLocality": "Lucknow", "addressRegion": "Uttar Pradesh", "addressCountry": "IN"}, "sameAs": ["https://www.instagram.com/zeva_makeup_studio/", "https://www.facebook.com/profile.php?id=61577740792588", "https://www.youtube.com/@zeva-makeup-studio", "https://www.linkedin.com/in/jeba-siddiqui-956927223/"]}</script>
-<link rel="stylesheet" href="assets/css/interactive.css?v=3"><link rel="stylesheet" href="assets/css/polish.css?v=4">
+  <meta name="twitter:title" content="Zeva Makeup Studio &amp; Salon | Dubagga, Lucknow">
+  <meta name="twitter:description" content="Luxury bridal and party makeup, hair and skin care at Zeva Makeup Studio in Dubagga, Lucknow.">
+  <meta name="twitter:image" content="https://zeva-makeup-studio.github.io/assets/images/hero/hero-bride.jpg">
+  
+  <!-- Schema.org Rich Snippet -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "BeautySalon",
+    "name": "Zeva Makeup Studio & Salon",
+    "image": "https://zeva-makeup-studio.github.io/assets/images/hero/hero-bride.jpg",
+    "url": "https://zeva-makeup-studio.github.io/",
+    "telephone": "+91-83539-09431",
+    "priceRange": "₹30 - ₹15,000",
+    "address": {
+      "@type": "PostalAddress",
+      "streetAddress": "Amrapali Yojana, Dubagga",
+      "addressLocality": "Lucknow",
+      "addressRegion": "Uttar Pradesh",
+      "postalCode": "226003",
+      "addressCountry": "IN"
+    },
+    "geo": {
+      "@type": "GeoCoordinates",
+      "latitude": "26.868",
+      "longitude": "80.865"
+    },
+    "openingHoursSpecification": {
+      "@type": "OpeningHoursSpecification",
+      "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"],
+      "opens": "10:30",
+      "closes": "19:30"
+    },
+    "sameAs": [
+      "https://www.instagram.com/zeva_makeup_studio/",
+      "https://www.facebook.com/profile.php?id=61577740792588",
+      "https://www.youtube.com/@zeva-makeup-studio",
+      "https://www.linkedin.com/in/jeba-siddiqui-956927223/"
+    ]
+  }
+  </script>
 </head>
 <body>
+
+  <!-- Site Navigation -->
   <header class="site-header">
     <nav class="nav" aria-label="Main navigation">
-      <a class="brand" href="/" aria-label="Zeva Makeup Studio home">ZEVA</a>
-      <div class="nav-links"><a href="services.html">Services</a><a href="#about">About</a><a href="#socials">Socials</a><button class="nav-book" type="button" data-open-booking>Book now</button></div>
+      <div class="brand-wrapper">
+        <a class="brand" href="/" aria-label="Zeva Makeup Studio Home">ZEVA</a>
+        <span class="brand-tagline">Makeup Studio &amp; Salon</span>
+      </div>
+
+      <div class="nav-links">
+        <a href="/" class="active">Home</a>
+        <a href="services.html">Services &amp; Pricing</a>
+        <a href="#standards">Why Zeva</a>
+        <a href="#lookbook">Lookbook</a>
+        <a href="#book">Book Appointment</a>
+        <a href="#about">About</a>
+        <a href="#testimonials">Reviews</a>
+      </div>
+
+      <div class="nav-actions">
+        <!-- Dark / Light Mode Switcher -->
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">☾ Dark</button>
+        
+        <a class="nav-phone" href="tel:+918353909431" title="Call Zeva Studio">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+          <span>Call</span>
+        </a>
+        <button class="nav-book" type="button" data-service="General Consultation" data-scroll-to-book>
+          <span>Book now</span>
+        </button>
+        <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      </div>
     </nav>
   </header>
+
   <main>
+    <!-- Hero Section -->
     <section class="hero">
-      <div class="hero-copy">
-        <p class="eyebrow">Makeup studio & salon · Lucknow</p>
-        <h1>Beauty that feels<br>like <em>you.</em></h1>
-        <p class="lead">Bridal makeup, party looks, hair, skin care and salon services—thoughtfully planned for your everyday and milestone moments.</p>
-        <div class="actions"><button class="button" type="button" data-open-booking>Book on WhatsApp</button><a class="button button-quiet" href="services.html">Explore services</a></div>
+      <div class="hero-container">
+        <div class="hero-copy">
+          <div class="hero-rating-pill">
+            <span class="stars">★★★★★</span>
+            <span>4.9/5 Rating · Dubagga, Lucknow · 150+ Happy Brides</span>
+          </div>
+          <p class="eyebrow">Luxury Makeup Studio &amp; Salon · Lucknow</p>
+          <h1>Beauty that feels<br>like <em>you.</em></h1>
+          <p class="lead">Luxury bridal makeup, high-definition artistry, and bespoke salon care — thoughtfully tailored by certified artist Jeba Siddiqui for your everyday radiance and life's milestone celebrations.</p>
+          
+          <div class="hero-actions">
+            <a class="button button-whatsapp" href="#book">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.586 1.761.948 2.791.948 3.181 0 5.767-2.586 5.768-5.766.001-3.18-2.585-5.767-5.768-5.767zm7.524 5.766c-.002 4.153-3.376 7.527-7.525 7.527-1.309 0-2.408-.344-3.473-.974l-4.557 1.196 1.221-4.444c-.694-1.121-1.066-2.327-1.068-3.305.002-4.153 3.377-7.527 7.526-7.527 4.15 0 7.524 3.374 7.526 7.527z"/></svg>
+              <span>Book on WhatsApp</span>
+            </a>
+            <a class="button button-outline" href="services.html">
+              <span>View Services &amp; Prices &rarr;</span>
+            </a>
+          </div>
+
+          <div class="hero-trust-strip">
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>100% Branded Kits (MAC, Huda, NARS)</span>
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Studio &amp; Freelance On-Location</span>
+            </div>
+            <div class="hero-trust-item">
+              <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"></polyline></svg>
+              <span>Customized Bridal Consultation</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-art-wrapper">
+          <div class="hero-floating-card">
+            <p>"Jeba did my bridal makeup and it stayed flawless for 14 hours straight. Truly magical!"</p>
+            <cite>— Anam S., Lucknow Bride</cite>
+          </div>
+          <figure class="hero-frame">
+            <img src="assets/images/hero/hero-bride.jpg" alt="Luxury bridal makeup inspiration by Zeva Makeup Studio" width="600" height="750" fetchpriority="high">
+            <div class="hero-frame-badge">
+              <div>
+                <strong>Jeba Siddiqui Artistry</strong>
+                <span>Certified Bridal &amp; Salon Specialist</span>
+              </div>
+              <span style="color:var(--gold-300); font-weight:700;">Dubagga, LKO</span>
+            </div>
+          </figure>
+        </div>
       </div>
-      <figure class="hero-art"><img src="assets/images/hero/hero-bride.jpg" alt="Bridal makeup inspiration in a green outfit" width="1600" height="724" fetchpriority="high"><figcaption>BRIDAL · BEAUTY · CONFIDENCE</figcaption></figure>
     </section>
-    <div class="location-strip">Women’s salon · Amrapali Yojana, Dubagga, Lucknow · <a href="tel:+918353909431">+91 83539 09431</a></div>
 
-    <section class="section" id="about">
-      <p class="eyebrow ink">Welcome to Zeva</p>
-      <h2>Personal service. Polished results.</h2>
-      <div class="two-column about-layout">
-        <div><p class="lead dark">Zeva Makeup Studio & Salon is led by makeup artist and beautician Jeba Siddiqui. Visit the Lucknow studio for salon care, or request a freelance makeup appointment for a special event.</p><div class="callout"><strong>Want the full service list?</strong><p>See every current service and regular price in one place.</p><a href="services.html">View services & prices →</a></div></div>
-        <img class="about-image" src="assets/images/studio/studio-welcome.jpg" alt="Welcoming salon studio setting" loading="lazy" width="1500" height="890">
+    <!-- Location & Quick Action Strip -->
+    <div class="location-strip">
+      <span>✨ Women-Only Luxury Salon</span>
+      <span>•</span>
+      <span>📍 Amrapali Yojana, Dubagga, Lucknow</span>
+      <span>•</span>
+      <span>⏰ Open Daily: 10:30 AM &ndash; 7:30 PM</span>
+      <span>•</span>
+      <span>📞 <a href="tel:+918353909431">+91 83539 09431</a></span>
+    </div>
+
+    <!-- The Zeva Standard (Trust Pillars) -->
+    <section class="section" id="standards">
+      <div class="section-header">
+        <p class="eyebrow ink">Why Lucknow Brides Trust Zeva</p>
+        <h2>The Zeva Standard of Care</h2>
+        <p class="section-subtitle">We believe beauty should feel effortless, elevated, and uniquely yours. Here is our promise for every appointment.</p>
+      </div>
+
+      <div class="pillars-grid">
+        <div class="pillar-card">
+          <div class="pillar-icon-box">💎</div>
+          <h3>100% Genuine Branded Kits</h3>
+          <p>We work exclusively with trusted global cosmetics including MAC, Huda Beauty, NARS, Kryolan, and Laura Mercier to ensure your skin is protected and glowing all day.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">🎨</div>
+          <h3>Bespoke Artistry &amp; Trials</h3>
+          <p>Every bridal and party package begins with skin prep analysis, tailored undertone matching, and complimentary styling support for jewelry and dupatta draping.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">🚗</div>
+          <h3>Freelance &amp; Venue Support</h3>
+          <p>Enjoy peaceful appointments at our private Lucknow studio, or book Jeba and her team for freelance on-location bridal glam at your wedding venue or home.</p>
+        </div>
+
+        <div class="pillar-card">
+          <div class="pillar-icon-box">✨</div>
+          <h3>Strict Sanitization &amp; Hygiene</h3>
+          <p>Sanitized brush sets for every client, single-use applicators, and clean tools guarantee safety, comfort, and zero skin irritation.</p>
+        </div>
       </div>
     </section>
 
-    <section class="section category-section" id="services"><p class="eyebrow ink">The Zeva service menu</p><h2>Beauty, in every detail.</h2><p class="section-intro">Explore the care that feels right for you, from everyday appointments to special occasions.</p><div class="category-grid"><a class="category-card" href="services.html#makeup"><img src="assets/images/bridal/bridal-green.jpg" alt="" loading="lazy" width="1500" height="884" style="--focal:63% 45%"><div><span class="category-number">01</span><h3>Makeup artistry</h3><p>Thoughtful looks for celebrations and special occasions.</p><strong>From ₹1,500</strong><span class="category-link">Explore services ↗</span></div></a><a class="category-card" href="services.html#skin"><img src="assets/images/services/facial-care.jpg" alt="" loading="lazy" width="1500" height="889" style="--focal:45% 48%"><div><span class="category-number">02</span><h3>Skin & facial care</h3><p>Explore cleanups, facials and D-Tan services.</p><strong>From ₹200</strong><span class="category-link">Explore services ↗</span></div></a><a class="category-card" href="services.html#waxing"><img src="assets/images/studio/studio-welcome.jpg" alt="" loading="lazy" width="1500" height="890" style="--focal:64% 40%"><div><span class="category-number">03</span><h3>Waxing</h3><p>A selection of waxing services for face and body.</p><strong>From ₹100</strong><span class="category-link">Explore services ↗</span></div></a><a class="category-card" href="services.html#threading"><img src="assets/images/bridal/bridal-detail.jpg" alt="" loading="lazy" width="1500" height="886" style="--focal:75% 45%"><div><span class="category-number">04</span><h3>Threading & face care</h3><p>Threading and face services for everyday care.</p><strong>From ₹30</strong><span class="category-link">Explore services ↗</span></div></a><a class="category-card" href="services.html#hair"><img src="assets/images/services/hair-care.jpg" alt="" loading="lazy" width="1500" height="889" style="--focal:52% 48%"><div><span class="category-number">05</span><h3>Hair services</h3><p>Haircuts, wash and hair spa services.</p><strong>From ₹150</strong><span class="category-link">Explore services ↗</span></div></a></div></section>
+    <!-- Signature Services Showcase -->
+    <section class="section soft" id="services">
+      <div class="section-header">
+        <p class="eyebrow ink">Curated Offerings</p>
+        <h2>Signature Services for Every Moment</h2>
+        <p class="section-subtitle">Transparent regular pricing with bespoke consultations for your milestone occasions.</p>
+      </div>
 
+      <div class="services-showcase-grid">
+        <!-- Service Card 1 -->
+        <article class="showcase-card">
+          <div class="showcase-card-image">
+            <span class="showcase-card-tag">Milestone Occasions</span>
+            <img src="assets/images/bridal/bridal-pink.jpg" alt="Bridal and engagement makeup" loading="lazy">
+          </div>
+          <div class="showcase-card-body">
+            <h3>Bridal &amp; Celebration Makeup</h3>
+            <p>From soft dewy day-party glam to high-definition bridal and long-wear airbrush looks tailored to your outfit.</p>
+            <div class="showcase-card-footer">
+              <div class="showcase-price">
+                <small>Starts from </small>₹1,500
+              </div>
+              <a class="showcase-link" href="services.html#makeup">View 9 Services &rarr;</a>
+            </div>
+          </div>
+        </article>
 
-    <section class="section studio-section">
-      <div class="studio-photo"><img src="assets/images/studio/studio-interior.jpg" alt="Elegant salon interior inspiration" loading="lazy" width="1600" height="945"></div>
-      <div><p class="eyebrow ink">A calm place for beauty</p><h2>Designed around your appointment.</h2><p class="intro">A considered salon experience for everyday care and the occasions you want to remember.</p><a class="text-link" href="services.html">Browse services & prices →</a></div>
+        <!-- Service Card 2 -->
+        <article class="showcase-card">
+          <div class="showcase-card-image">
+            <span class="showcase-card-tag">Skin Radiance</span>
+            <img src="assets/images/services/facial-care.jpg" alt="Facial care and skin treatments" loading="lazy">
+          </div>
+          <div class="showcase-card-body">
+            <h3>Skin &amp; Facial Care</h3>
+            <p>Deep pore cleanups, fruit facials, luxury D-Tan, and gold glow rituals formulated to revitalize tired skin.</p>
+            <div class="showcase-card-footer">
+              <div class="showcase-price">
+                <small>Starts from </small>₹200
+              </div>
+              <a class="showcase-link" href="services.html#skin">View 6 Services &rarr;</a>
+            </div>
+          </div>
+        </article>
+
+        <!-- Service Card 3 -->
+        <article class="showcase-card">
+          <div class="showcase-card-image">
+            <span class="showcase-card-tag">Salon Pampering</span>
+            <img src="assets/images/services/hair-care.jpg" alt="Hair care and styling" loading="lazy">
+          </div>
+          <div class="showcase-card-body">
+            <h3>Hair Spa, Styling &amp; Cuts</h3>
+            <p>Revitalizing nourishing hair spas, precision haircuts (Layer, Multi-cut, BOB), washes, and event blow-dries.</p>
+            <div class="showcase-card-footer">
+              <div class="showcase-price">
+                <small>Starts from </small>₹150
+              </div>
+              <a class="showcase-link" href="services.html#hair">View 6 Services &rarr;</a>
+            </div>
+          </div>
+        </article>
+      </div>
+
+      <div style="text-align: center; margin-top: 45px;">
+        <a class="button" href="services.html">
+          <span>View Complete 33+ Services Menu with Prices &rarr;</span>
+        </a>
+      </div>
     </section>
 
-    <section class="section socials-section" id="socials">
-      <p class="eyebrow ink">Stay connected</p>
-      <h2>See Zeva in action.</h2>
-      <p class="intro">Follow the active Zeva channels for makeup inspiration, salon updates, beauty tips and appointment information. The website is the main place for services and booking.</p>
-      <div class="social-carousel" aria-label="Zeva social media links"><div class="social-rail">
-        <a class="social-card portrait-card instagram-card" href="https://www.instagram.com/zeva_makeup_studio/" target="_blank" rel="noopener noreferrer"><img src="assets/images/bridal/bridal-green.jpg" alt="Bridal makeup inspiration" loading="lazy" width="1500" height="884"><span><b>Instagram</b><small>Makeup looks, reels, offers and salon updates.</small><em>Follow Zeva ↗</em></span></a>
-        <a class="social-card portrait-card facebook-card" href="https://www.facebook.com/profile.php?id=61577740792588" target="_blank" rel="noopener noreferrer"><img src="assets/images/social/makeup-kit-dark.jpg" alt="Makeup tools and products" loading="lazy" width="1500" height="881"><span><b>Facebook</b><small>Local updates, salon information and community posts.</small><em>Follow Zeva ↗</em></span></a>
-        <a class="social-card portrait-card youtube-card" href="https://www.youtube.com/@zeva-makeup-studio" target="_blank" rel="noopener noreferrer"><img src="assets/images/bridal/bridal-detail.jpg" alt="Bridal eye makeup application" loading="lazy" width="1500" height="886"><span><b>YouTube</b><small>Beauty videos, makeup inspiration and tutorials.</small><em>Watch Zeva ↗</em></span></a>
-        <a class="social-card portrait-card linkedin-card" href="https://www.linkedin.com/in/jeba-siddiqui-956927223/" target="_blank" rel="noopener noreferrer"><img src="assets/images/social/makeup-kit-light.jpg" alt="Makeup products and brushes" loading="lazy" width="1500" height="885"><span><b>LinkedIn</b><small>Jeba’s professional beauty and salon profile.</small><em>View profile ↗</em></span></a>
-        <a class="social-card portrait-card whatsapp-card" href="https://wa.me/918353909431" target="_blank" rel="noopener noreferrer"><img src="assets/images/studio/studio-welcome.jpg" alt="Salon welcome area" loading="lazy" width="1500" height="890"><span><b>WhatsApp Business</b><small>Quick questions and appointment requests.</small><em>Message Zeva ↗</em></span></a>
-      </div></div>
-      <p class="site-link">Main link: <a href="https://zeva-makeup-studio.github.io/">zeva-makeup-studio.github.io</a></p>
+    <!-- Bridal Lookbook & Portfolio Gallery -->
+    <section class="section" id="lookbook">
+      <div class="section-header">
+        <p class="eyebrow ink">Portfolio Showcase</p>
+        <h2>The Bridal &amp; Artistry Lookbook</h2>
+        <p class="section-subtitle">Real brides, real glow. Swipe through our signature looks created at our Dubagga studio.</p>
+      </div>
+
+      <div class="lookbook-grid">
+        <div class="lookbook-card">
+          <img src="assets/images/bridal/bridal-green.jpg" alt="Royal bride in emerald lehenga" loading="lazy">
+          <div class="lookbook-overlay">
+            <span class="lookbook-tag">Reception Elegance</span>
+            <h3 class="lookbook-title">Royal Emerald Glow</h3>
+          </div>
+        </div>
+
+        <div class="lookbook-card">
+          <img src="assets/images/bridal/bridal-detail.jpg" alt="Detailed bridal eye makeup" loading="lazy">
+          <div class="lookbook-overlay">
+            <span class="lookbook-tag">High-Precision Detail</span>
+            <h3 class="lookbook-title">Cut-Crease &amp; Smokey Liner</h3>
+          </div>
+        </div>
+
+        <div class="lookbook-card">
+          <img src="assets/images/bridal/bridal-pink.jpg" alt="Pastel soft bridal glam" loading="lazy">
+          <div class="lookbook-overlay">
+            <span class="lookbook-tag">Day Ceremony Look</span>
+            <h3 class="lookbook-title">Soft Rose Radiance</h3>
+          </div>
+        </div>
+
+        <div class="lookbook-card">
+          <img src="assets/images/studio/studio-interior.jpg" alt="Zeva Salon Interior" loading="lazy">
+          <div class="lookbook-overlay">
+            <span class="lookbook-tag">Private Sanctuary</span>
+            <h3 class="lookbook-title">Calm, Hygienic Studio</h3>
+          </div>
+        </div>
+      </div>
     </section>
 
-    <section class="inline-booking section" id="appointment"><div class="inline-booking-intro"><p class="eyebrow ink">Your next visit</p><h2>Let’s plan your appointment.</h2><p>Tell us what you have in mind. Review your request in WhatsApp before sending; Zeva will confirm availability.</p></div><form id="inline-booking-form" class="inline-booking-form"><label>Your name *<input name="name" autocomplete="name" required maxlength="100"></label><div class="inline-picker"></div><label>Preferred date *<input name="date" type="date" required></label><label>Preferred time <input name="time" type="time"></label><label>Appointment type *<select name="type" required><option value="">Select one</option><option>At the salon</option><option>Freelance / another location</option></select></label><label class="inline-details">Extra details <textarea name="details" maxlength="350" placeholder="For freelance appointments, share only the area or location."></textarea></label><button class="button" type="submit">Continue to WhatsApp ↗</button><a class="form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdlE_HU9J3QaApyy7PPLVn61SA3UjmPYv734FfahQmQXUkTKg/viewform" target="_blank" rel="noopener noreferrer">Prefer Google Forms? Request here ↗</a><noscript><p>Please use the Google Form link to request an appointment.</p></noscript></form></section>
+    <!-- ON-PAGE APPOINTMENT BOOKING SECTION WITH VISIBLE LIVE QR CODE -->
+    <section class="section appointment-booking-section" id="book">
+      <div class="appointment-grid">
+        <!-- Left Side: Editorial Appointment Context -->
+        <div class="appointment-info">
+          <p class="eyebrow ink">Plan Your Visit</p>
+          <h2>Plan your<br>appointment.</h2>
+          <p class="lead">Tell us what you have in mind. Review your request in WhatsApp before sending; Zeva will confirm availability and slot details.</p>
+
+          <ul class="appointment-meta-list">
+            <li class="appointment-meta-item">
+              <div class="appointment-meta-icon">📍</div>
+              <div class="appointment-meta-text">
+                <strong>Studio Location</strong>
+                <span>Amrapali Yojana, Dubagga, Lucknow</span>
+              </div>
+            </li>
+            <li class="appointment-meta-item">
+              <div class="appointment-meta-icon">⏰</div>
+              <div class="appointment-meta-text">
+                <strong>Appointment Hours</strong>
+                <span>Monday &ndash; Sunday: 10:30 AM &ndash; 7:30 PM</span>
+              </div>
+            </li>
+            <li class="appointment-meta-item">
+              <div class="appointment-meta-icon">📞</div>
+              <div class="appointment-meta-text">
+                <strong>Direct Telephone Inquiries</strong>
+                <span><a href="tel:+918353909431" style="color:var(--gold-500); font-weight:700;">+91 83539 09431</a></span>
+              </div>
+            </li>
+            <li class="appointment-meta-item">
+              <div class="appointment-meta-icon">👰</div>
+              <div class="appointment-meta-text">
+                <strong>Freelance Wedding Artistry</strong>
+                <span>Available for on-location service across Lucknow</span>
+              </div>
+            </li>
+          </ul>
+
+          <div style="display:flex; gap:12px; flex-wrap:wrap;">
+            <a class="button button-outline" href="tel:+918353909431">
+              <span>Call Salon Directly</span>
+            </a>
+            <a class="button button-quiet" href="https://docs.google.com/forms/d/e/1FAIpQLSdlE_HU9J3QaApyy7PPLVn61SA3UjmPYv734FfahQmQXUkTKg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">
+              <span>Google Form Fallback &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <!-- Right Side: Booking Form Card with Guaranteed Visible QR Code -->
+        <div class="booking-card-panel">
+          <h3>Quick Appointment Request</h3>
+          <p class="sub">Complete the form below to connect instantly on WhatsApp or scan the live QR code with your phone camera.</p>
+
+          <form id="onpage-booking-form" class="quick-form">
+            <label>
+              Your Name *
+              <input name="name" autocomplete="name" required maxlength="100" placeholder="e.g. Fatima Khan">
+            </label>
+
+            <label>
+              Services *
+              <input name="service" list="onpage-service-options" required maxlength="120" placeholder="Choose or type your desired service...">
+              <datalist id="onpage-service-options">
+                <option value="HD Bridal (₹9,500)">
+                <option value="Air Brush Bridal (₹15,000)">
+                <option value="Engagement Makeup (₹5,500)">
+                <option value="HD Engagement Makeup (₹7,500)">
+                <option value="Reception Makeup (₹6,500)">
+                <option value="Day Party Makeup (₹1,500)">
+                <option value="Haldi Mehandi Makeup (₹2,500)">
+                <option value="Gold Facial (₹1,000)">
+                <option value="Fruit Cleanup (₹600)">
+                <option value="Luxury D-Tan (₹500)">
+                <option value="Hair Spa (₹1,200)">
+                <option value="Layer / Multi Cut (₹500)">
+                <option value="Full Face Threading (₹200)">
+                <option value="Rica Wax Full Hand & Leg (₹1,800)">
+              </datalist>
+            </label>
+
+            <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+              <label>
+                Preferred date *
+                <input name="date" type="date" required>
+              </label>
+              <label>
+                Preferred time
+                <input name="time" type="time" placeholder="11:00 AM">
+              </label>
+            </div>
+
+            <label>
+              Appointment type *
+              <select name="type" required>
+                <option value="At the salon">At the salon (Dubagga, Lucknow)</option>
+                <option value="Freelance / another location">Freelance / at another venue</option>
+              </select>
+            </label>
+
+            <label>
+              Extra details
+              <textarea name="details" maxlength="350" placeholder="For freelance appointments, share the area, wedding date or venue location."></textarea>
+            </label>
+
+            <button class="button button-whatsapp" type="submit" style="width: 100%; min-height: 48px;">
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.586 1.761.948 2.791.948 3.181 0 5.767-2.586 5.768-5.766.001-3.18-2.585-5.767-5.768-5.767zm7.524 5.766c-.002 4.153-3.376 7.527-7.525 7.527-1.309 0-2.408-.344-3.473-.974l-4.557 1.196 1.221-4.444c-.694-1.121-1.066-2.327-1.068-3.305.002-4.153 3.377-7.527 7.526-7.527 4.15 0 7.524 3.374 7.526 7.527z"/></svg>
+              <span>Continue to WhatsApp &nearr;</span>
+            </button>
+
+            <a class="form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdlE_HU9J3QaApyy7PPLVn61SA3UjmPYv734FfahQmQXUkTKg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">
+              Prefer Google Forms? Request here &nearr;
+            </a>
+
+            <!-- GUARANTEED VISIBLE QR CODE CONTAINER -->
+            <div class="qr-box-container">
+              <div class="qr-box-header">
+                <div class="qr-box-title">
+                  <span class="qr-icon">📱</span>
+                  <span>Scan to continue in WhatsApp</span>
+                </div>
+                <p class="qr-box-desc">Review the request in WhatsApp before sending. The code contains the details you enter; keep it private. Zeva confirms availability.</p>
+              </div>
+
+              <!-- LIVE QR FRAME -->
+              <div id="onpage-qr-code" class="qr-code-frame" title="Scan with your phone camera or WhatsApp"></div>
+
+              <div>
+                <a id="onpage-qr-link" class="qr-action-link" href="https://wa.me/918353909431" target="_blank" rel="noopener noreferrer">
+                  Open the same WhatsApp request &nearr;
+                </a>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- Founder / About Section -->
+    <section class="section soft" id="about">
+      <div class="about-grid">
+        <div class="about-content">
+          <p class="eyebrow ink">Meet The Lead Artist</p>
+          <h2>Personal Service.<br>Polished, Timeless Results.</h2>
+          <p class="about-lead">Zeva Makeup Studio &amp; Salon is led by certified makeup artist and beautician <strong>Jeba Siddiqui</strong>. With deep expertise in modern Indian bridal aesthetics, Jeba crafts looks that celebrate your natural features rather than masking them under heavy layers.</p>
+          
+          <ul class="about-features-list">
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span>Certified in Advanced HD &amp; Airbrush Bridal Makeup</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span>Full bridal styling support including dupatta setting and jewelry pinning</span>
+            </li>
+            <li>
+              <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg>
+              <span>Comfortable, women-only private atmosphere in Dubagga, Lucknow</span>
+            </li>
+          </ul>
+
+          <div style="display:flex; gap:14px; flex-wrap:wrap;">
+            <a class="button" href="#book">
+              <span>Plan Your Appointment</span>
+            </a>
+            <a class="button button-outline" href="services.html">
+              <span>View Service Menu &rarr;</span>
+            </a>
+          </div>
+        </div>
+
+        <div class="about-photo-wrapper">
+          <div class="about-photo-card">
+            <img src="assets/images/studio/studio-welcome.jpg" alt="Welcoming studio ambiance at Zeva" loading="lazy">
+          </div>
+          <div class="about-experience-badge">
+            <strong>500+</strong>
+            <span>Delighted Clients in Lucknow</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Testimonials / Client Love -->
+    <section class="section" id="testimonials">
+      <div class="section-header">
+        <p class="eyebrow ink">Client Love &amp; Reviews</p>
+        <h2>Loved by Lucknow's Brides</h2>
+        <p class="section-subtitle">Real feedback from brides and salon clients who trusted Zeva for their most precious days.</p>
+      </div>
+
+      <div class="testimonials-grid">
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"I booked Jeba for my Nikah and Reception. The HD makeup was so lightweight, completely sweat-proof, and looked so natural in photos. Everyone asked where I got it done!"</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">SK</div>
+            <div class="testimonial-meta">
+              <strong>Sadaf Khan</strong>
+              <span>Bridal Client · Dubagga, Lucknow</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"The best salon in Dubagga. Very clean, polite staff, and the Hydra-facial gave me instant glow for Eid. Jeba personally ensures every customer is comfortable."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">RM</div>
+            <div class="testimonial-meta">
+              <strong>Ritu Mishra</strong>
+              <span>Salon Client · Lucknow</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="testimonial-card">
+          <div class="testimonial-stars">★★★★★</div>
+          <p class="testimonial-quote">"Her dupatta draping and eye makeup precision are unmatched! She arrived right on time for our venue appointment and made the entire bridal prep so peaceful."</p>
+          <div class="testimonial-author">
+            <div class="testimonial-avatar">NP</div>
+            <div class="testimonial-meta">
+              <strong>Neha Parveen</strong>
+              <span>Wedding Client · Kakori, Lucknow</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Socials & Community -->
+    <section class="section soft" id="contact">
+      <div class="section-header">
+        <p class="eyebrow ink">Stay Connected</p>
+        <h2>Follow Zeva in Action</h2>
+        <p class="section-subtitle">Catch daily reels, behind-the-scenes transformations, and festive discounts on our official channels.</p>
+      </div>
+
+      <div class="social-cards-grid">
+        <a class="social-link-card" href="https://www.instagram.com/zeva_makeup_studio/" target="_blank" rel="noopener noreferrer">
+          <div class="social-icon-circle instagram">📸</div>
+          <div class="social-link-info">
+            <strong>Instagram</strong>
+            <span>@zeva_makeup_studio</span>
+          </div>
+        </a>
+
+        <a class="social-link-card" href="https://wa.me/918353909431" target="_blank" rel="noopener noreferrer">
+          <div class="social-icon-circle whatsapp">💬</div>
+          <div class="social-link-info">
+            <strong>WhatsApp</strong>
+            <span>Quick Inquiries</span>
+          </div>
+        </a>
+
+        <a class="social-link-card" href="https://www.youtube.com/@zeva-makeup-studio" target="_blank" rel="noopener noreferrer">
+          <div class="social-icon-circle youtube">▶</div>
+          <div class="social-link-info">
+            <strong>YouTube</strong>
+            <span>Tutorials &amp; Looks</span>
+          </div>
+        </a>
+
+        <a class="social-link-card" href="https://www.facebook.com/profile.php?id=61577740792588" target="_blank" rel="noopener noreferrer">
+          <div class="social-icon-circle facebook">f</div>
+          <div class="social-link-info">
+            <strong>Facebook</strong>
+            <span>Community Updates</span>
+          </div>
+        </a>
+      </div>
+    </section>
+
+    <!-- High-Converting CTA Banner -->
+    <div style="max-width: 1220px; margin: 0 auto; padding: 0 24px;">
+      <div class="booking-banner-wrap">
+        <div class="booking-banner-copy">
+          <p class="eyebrow">Ready When You Are</p>
+          <h2>Let’s Plan Your Next Beautiful Moment.</h2>
+          <p>Book your bridal slot or salon session easily via WhatsApp. Early reservation is recommended for wedding and festive dates.</p>
+        </div>
+        <div class="booking-banner-actions">
+          <a class="button button-whatsapp" href="#book">
+            <span>Book Appointment on WhatsApp</span>
+          </a>
+          <a class="button button-outline" href="tel:+918353909431">
+            <span>Call +91 83539 09431</span>
+          </a>
+        </div>
+      </div>
+    </div>
   </main>
-  <footer><div><a class="brand" href="/">ZEVA</a><p>Makeup Studio & Salon · Lucknow</p></div><div><a href="services.html">Services</a><a href="#socials">Socials</a><a href="https://zeva-makeup-studio.github.io/">Website</a><a href="tel:+918353909431">Call</a></div></footer>
-  <dialog class="booking-modal" id="booking-modal" aria-labelledby="booking-title"><form method="dialog" class="modal-shell"><button class="close" type="button" value="cancel" aria-label="Close quick booking form">×</button><p class="eyebrow ink">Quick appointment request</p><h2 id="booking-title">Book on WhatsApp</h2><p class="small">Complete this short form and WhatsApp will open with your request. It does not confirm a booking.</p><div class="quick-form"><label>Your name *<input name="name" autocomplete="name" required maxlength="100"></label><label>Service *<input name="service" required maxlength="120" placeholder="e.g. HD Bridal Makeup"></label><label>Preferred date *<input name="date" type="date" required></label><label>Preferred time <input name="time" type="time"></label><label>Appointment type *<select name="type" required><option value="">Select one</option><option>At the salon</option><option>Freelance / another location</option></select></label><label>Extra details <textarea name="details" maxlength="350" placeholder="For freelance appointments, share only the area or location."></textarea></label><button class="button" type="submit">Continue to WhatsApp ↗</button><a class="form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdlE_HU9J3QaApyy7PPLVn61SA3UjmPYv734FfahQmQXUkTKg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">Prefer Google Forms? Request an appointment here ↗</a></div></form></dialog>
-  <script src="assets/js/qrcode.js"></script><script src="assets/js/site.js?v=2"></script><script src="assets/js/interactive.js?v=4"></script>
+
+  <!-- Footer -->
+  <footer>
+    <div class="footer-inner">
+      <div class="footer-col">
+        <a class="brand" href="/" style="font-size: 28px;">ZEVA</a>
+        <p style="margin-top: 10px;">Zeva Makeup Studio &amp; Salon is a premier beauty destination in Dubagga, Lucknow, offering luxury bridal artistry, HD party makeup, and comprehensive salon care.</p>
+        <p style="color:var(--gold-400); font-size:13px; font-weight:600;">Led by Certified Artist Jeba Siddiqui</p>
+      </div>
+
+      <div class="footer-col">
+        <h4>Quick Links</h4>
+        <ul class="footer-links">
+          <li><a href="/">Home</a></li>
+          <li><a href="services.html">Services &amp; Pricing</a></li>
+          <li><a href="#standards">The Zeva Standard</a></li>
+          <li><a href="#lookbook">Bridal Lookbook</a></li>
+          <li><a href="#book">Book Appointment</a></li>
+          <li><a href="#testimonials">Client Reviews</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Service Categories</h4>
+        <ul class="footer-links">
+          <li><a href="services.html#makeup">HD &amp; Airbrush Bridal</a></li>
+          <li><a href="services.html#skin">Facials &amp; Cleanups</a></li>
+          <li><a href="services.html#waxing">Waxing &amp; Rica Wax</a></li>
+          <li><a href="services.html#threading">Threading &amp; Face Care</a></li>
+          <li><a href="services.html#hair">Hair Spa &amp; Precision Cuts</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-col">
+        <h4>Visit Studio</h4>
+        <p>Amrapali Yojana, Dubagga,<br>Lucknow, Uttar Pradesh 226003</p>
+        <p><strong>Phone:</strong> <a href="tel:+918353909431" style="color:var(--gold-300);">+91 83539 09431</a></p>
+        <p><strong>Hours:</strong> Mon – Sun: 10:30 AM – 7:30 PM</p>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      <span>&copy; 2026 Zeva Makeup Studio &amp; Salon. All rights reserved.</span>
+      <span>Website managed by <a href="https://github.com/Arshad9999" target="_blank" rel="noopener noreferrer" style="color:var(--gold-300);">Arshad Siddiqui</a></span>
+    </div>
+  </footer>
+
+  <!-- Appointment Booking Modal Dialog -->
+  <dialog class="booking-modal" id="booking-modal" aria-labelledby="booking-title">
+    <form method="dialog" class="modal-shell">
+      <button class="close" type="button" aria-label="Close booking form">&times;</button>
+      <p class="eyebrow ink">Instant Appointment Request</p>
+      <h2 id="booking-title">Book via WhatsApp</h2>
+      <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 16px 0;">Fill in your details below and WhatsApp will open with your customized appointment message ready to send.</p>
+      
+      <div class="quick-form">
+        <label>
+          Your Full Name *
+          <input name="name" autocomplete="name" required maxlength="100" placeholder="e.g. Fatima Khan">
+        </label>
+
+        <label>
+          Desired Service *
+          <input name="service" list="modal-service-list" required maxlength="120" placeholder="e.g. HD Bridal, Facial, Hair Spa">
+          <datalist id="modal-service-list">
+            <option value="HD Bridal (₹9,500)">
+            <option value="Air Brush Bridal (₹15,000)">
+            <option value="Engagement Makeup (₹5,500)">
+            <option value="HD Engagement Makeup (₹7,500)">
+            <option value="Reception Makeup (₹6,500)">
+            <option value="Day Party Makeup (₹1,500)">
+            <option value="Haldi Mehandi Makeup (₹2,500)">
+            <option value="Luxury D-Tan (₹500)">
+            <option value="Gold Facial (₹1,000)">
+            <option value="Fruit Cleanup (₹600)">
+            <option value="Hair Spa (₹1,200)">
+            <option value="Layer / Multi Cut (₹500)">
+            <option value="Full Face Threading (₹200)">
+            <option value="Rica Wax Full Hand & Leg">
+          </datalist>
+        </label>
+
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
+          <label>
+            Preferred Date *
+            <input name="date" type="date" required>
+          </label>
+          <label>
+            Preferred Time
+            <input name="time" type="time" placeholder="11:00 AM">
+          </label>
+        </div>
+
+        <label>
+          Appointment Location *
+          <select name="type" required>
+            <option value="At the salon">At Zeva Salon (Dubagga, Lucknow)</option>
+            <option value="Freelance / another location">Freelance / at another venue</option>
+          </select>
+        </label>
+
+        <label>
+          Additional Notes
+          <textarea name="details" maxlength="350" placeholder="Number of people, event venue, or special skin requirements..."></textarea>
+        </label>
+
+        <button class="button button-whatsapp" type="submit" style="width: 100%; min-height: 48px;">
+          <span>Continue to WhatsApp ↗</span>
+        </button>
+
+        <a class="form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdlE_HU9J3QaApyy7PPLVn61SA3UjmPYv734FfahQmQXUkTKg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">
+          Prefer Google Forms instead? Click here &rarr;
+        </a>
+
+        <!-- MODAL LIVE QR CODE CONTAINER -->
+        <div class="qr-box-container">
+          <div class="qr-box-header">
+            <div class="qr-box-title">
+              <span class="qr-icon">📱</span>
+              <span>Scan to continue in WhatsApp</span>
+            </div>
+            <p class="qr-box-desc">Scan with your smartphone to send this appointment request directly on WhatsApp.</p>
+          </div>
+          <div id="modal-qr-code" class="qr-code-frame"></div>
+          <div>
+            <a id="modal-qr-link" class="qr-action-link" href="https://wa.me/918353909431" target="_blank" rel="noopener noreferrer">
+              Open the same WhatsApp request &nearr;
+            </a>
+          </div>
+        </div>
+      </div>
+    </form>
+  </dialog>
+
+  <!-- Sticky Mobile Floating WhatsApp Bar -->
+  <div class="mobile-floating-bar" aria-label="Quick Mobile Booking">
+    <div class="mobile-floating-inner">
+      <a class="mobile-floating-call" href="tel:+918353909431" title="Call Zeva Studio">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
+      </a>
+      <a class="button button-whatsapp" href="#book">
+        <svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor"><path d="M12.031 6.172c-3.181 0-5.767 2.586-5.768 5.766-.001 1.298.38 2.27 1.019 3.287l-.711 2.598 2.669-.699c.969.586 1.761.948 2.791.948 3.181 0 5.767-2.586 5.768-5.766.001-3.18-2.585-5.767-5.768-5.767zm7.524 5.766c-.002 4.153-3.376 7.527-7.525 7.527-1.309 0-2.408-.344-3.473-.974l-4.557 1.196 1.221-4.444c-.694-1.121-1.066-2.327-1.068-3.305.002-4.153 3.377-7.527 7.526-7.527 4.15 0 7.524 3.374 7.526 7.527z"/></svg>
+        <span>Book on WhatsApp</span>
+      </a>
+    </div>
+  </div>
+
+  <script src="assets/js/qrcode.min.js"></script>
+  <script src="assets/js/site.js?v=4"></script>
 </body>
 </html>

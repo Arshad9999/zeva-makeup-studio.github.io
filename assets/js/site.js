@@ -1,61 +1,234 @@
-const modal = document.querySelector('#booking-modal');
-const services = ['Day Party Makeup','Haldi Mehandi Makeup','HD Makeup','Engagement Makeup','HD Engagement Makeup','Reception Makeup','HD Bridal','Engagement Airbrush','Air Brush Bridal','Bleach','D-Tan','Luxury D-Tan','Cleanup','Fruit Cleanup','Gold Facial','Under Arms','Half Leg Wax','Full Leg Wax','Full Face Wax','Half Hand Wax','Full Hand Wax','Rica Wax (Full Hand)','Rica Wax (Full Leg)','Threading','Forehead & Chin','Upper Lips','Full Face Threading','Hair Wash','Hair Trimming','V & U Shape Cut','Layer / Multi Cut','BOB Cut','Hair Spa'];
-const pickerStyle = document.createElement('style');
-pickerStyle.textContent = '.service-picker{margin:0;border:0;padding:0;min-width:0}.service-picker legend{font-size:13px;font-weight:750;margin-bottom:5px}.service-picker details{border:1px solid #d9bac5;background:#fff8fb}.service-picker summary{cursor:pointer;padding:10px;font-weight:600}.service-choices{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:8px;max-height:220px;overflow:auto;padding:10px;border-top:1px solid #ead3dc;background:#fff}.service-choice{display:flex!important;align-items:center;gap:7px;font-size:13px!important;font-weight:500!important}.service-choice input{width:18px;height:18px;margin:0}.service-error{color:#8f1d38;font-size:13px;font-weight:700;margin:6px 0 0}.service-error:empty{display:none}@media(max-width:520px){.service-choices{grid-template-columns:1fr}}';
-document.head.append(pickerStyle);
-const input = modal?.querySelector('input[name="service"]');
-if (input) {
-  const picker = document.createElement('fieldset');
-  picker.className = 'service-picker';
-  const legend = document.createElement('legend'); legend.textContent = 'Services *';
-  const details = document.createElement('details');
-  const summary = document.createElement('summary'); summary.textContent = 'Choose one or more services';
-  const choices = document.createElement('div'); choices.className = 'service-choices';
-  const error = document.createElement('p'); error.className = 'service-error'; error.id = 'service-error'; error.setAttribute('role', 'alert');
-  details.setAttribute('aria-describedby', 'service-error');
-  services.forEach(service => {
-    const choice = document.createElement('label'); choice.className = 'service-choice';
-    const checkbox = document.createElement('input'); checkbox.type = 'checkbox'; checkbox.name = 'services'; checkbox.value = service;
-    const text = document.createElement('span'); text.textContent = service;
-    choice.append(checkbox, text); choices.append(choice);
+/**
+ * ZEVA MAKEUP STUDIO & SALON — INTERACTION & LIVE QR LOGIC
+ */
+
+document.addEventListener('DOMContentLoaded', () => {
+  // ==========================================================================
+  // 1. Theme Management (Light / Dark Mode with LocalStorage)
+  // ==========================================================================
+  const themeToggleButtons = document.querySelectorAll('.theme-toggle');
+  const storedTheme = localStorage.getItem('zeva-theme');
+  const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+  const initialTheme = storedTheme || (systemPrefersDark ? 'dark' : 'light');
+
+  function applyTheme(theme) {
+    document.documentElement.setAttribute('data-theme', theme);
+    localStorage.setItem('zeva-theme', theme);
+    themeToggleButtons.forEach(btn => {
+      btn.innerHTML = theme === 'dark' ? '☀ Light' : '☾ Dark';
+      btn.setAttribute('aria-label', theme === 'dark' ? 'Switch to light mode' : 'Switch to dark mode');
+    });
+  }
+
+  applyTheme(initialTheme);
+
+  themeToggleButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      const current = document.documentElement.getAttribute('data-theme') || 'light';
+      applyTheme(current === 'dark' ? 'light' : 'dark');
+    });
   });
-  function updateSummary() {
-    const selected = [...choices.querySelectorAll('input:checked')].map(choice => choice.value);
-    summary.textContent = selected.length ? 'Selected: ' + selected.join(', ') : 'Choose one or more services';
-    error.textContent = '';
+
+  // ==========================================================================
+  // 2. Mobile Navigation Toggle
+  // ==========================================================================
+  const navToggle = document.querySelector('.nav-toggle');
+  const navLinks = document.querySelector('.nav-links');
+
+  if (navToggle && navLinks) {
+    navToggle.addEventListener('click', () => {
+      const isOpen = navLinks.classList.toggle('open');
+      navToggle.setAttribute('aria-expanded', isOpen);
+      navToggle.innerHTML = isOpen ? '&times;' : '&#9776;';
+    });
+
+    navLinks.querySelectorAll('a').forEach(link => {
+      link.addEventListener('click', () => {
+        navLinks.classList.remove('open');
+        navToggle.setAttribute('aria-expanded', 'false');
+        navToggle.innerHTML = '&#9776;';
+      });
+    });
   }
-  choices.addEventListener('change', updateSummary);
-  picker.addEventListener('selectionchange', updateSummary);
-  details.append(summary, choices); picker.append(legend, details, error); input.closest('label').replaceWith(picker);
-}
-const date = modal?.querySelector('input[name="date"]');
-function setMinimumDate() {
+
+  // ==========================================================================
+  // 3. WhatsApp Message & Live QR Code Generator Engine
+  // ==========================================================================
+  function generateWhatsAppUrl(formData) {
+    const name = (formData.get('name') || '').toString().trim();
+    const service = (formData.get('service') || '').toString().trim();
+    const date = (formData.get('date') || '').toString();
+    const time = (formData.get('time') || 'Flexible').toString();
+    const type = (formData.get('type') || 'At the salon').toString();
+    const details = (formData.get('details') || '').toString().trim();
+
+    const lines = [
+      '✨ *Hello Zeva Makeup Studio!* ✨',
+      'I would like to request an appointment:',
+      '',
+      `👤 *Name:* ${name || 'Prospective Client'}`,
+      `💄 *Service:* ${service || 'General Bridal & Salon Consultation'}`,
+      `📅 *Preferred Date:* ${date || 'To be confirmed'}`,
+      `⏰ *Preferred Time:* ${time || 'Flexible'}`,
+      `📍 *Appointment Type:* ${type}`,
+    ];
+
+    if (details) {
+      lines.push(`📝 *Notes:* ${details}`);
+    }
+
+    lines.push('', 'Please confirm availability. Thank you!');
+    const encodedText = encodeURIComponent(lines.join('\n'));
+    return `https://wa.me/918353909431?text=${encodedText}`;
+  }
+
+  function renderQRCode(targetContainer, targetUrl) {
+    if (!targetContainer) return;
+    targetContainer.innerHTML = '';
+
+    try {
+      if (typeof QRCode !== 'undefined') {
+        new QRCode(targetContainer, {
+          text: targetUrl,
+          width: 150,
+          height: 150,
+          colorDark: '#1b0409',
+          colorLight: '#ffffff',
+          correctLevel: QRCode.CorrectLevel.M
+        });
+      } else {
+        throw new Error('Local QRCode library not ready');
+      }
+    } catch (e) {
+      // Guaranteed Fallback to Image
+      const encodedUrl = encodeURIComponent(targetUrl);
+      targetContainer.innerHTML = `<img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=${encodedUrl}" alt="Scan to Book on WhatsApp" width="150" height="150" loading="eager" />`;
+    }
+  }
+
+  function setupFormSync(formElement, qrContainerSelector, qrLinkSelector) {
+    if (!formElement) return;
+
+    const qrContainer = formElement.parentElement.querySelector(qrContainerSelector) || document.querySelector(qrContainerSelector);
+    const qrLink = formElement.parentElement.querySelector(qrLinkSelector) || document.querySelector(qrLinkSelector);
+
+    function update() {
+      const data = new FormData(formElement);
+      const url = generateWhatsAppUrl(data);
+      renderQRCode(qrContainer, url);
+      if (qrLink) {
+        qrLink.href = url;
+      }
+    }
+
+    // Live update on input
+    formElement.addEventListener('input', update);
+    formElement.addEventListener('change', update);
+
+    // Initial render
+    update();
+
+    // Submission handler
+    formElement.addEventListener('submit', e => {
+      e.preventDefault();
+      if (!formElement.reportValidity()) return;
+      const data = new FormData(formElement);
+      const url = generateWhatsAppUrl(data);
+      window.open(url, '_blank');
+    });
+  }
+
+  // Setup form sync on on-page booking form
+  const onPageForm = document.querySelector('#onpage-booking-form');
+  if (onPageForm) {
+    setupFormSync(onPageForm, '#onpage-qr-code', '#onpage-qr-link');
+  }
+
+  // ==========================================================================
+  // 4. Booking Modal & Date Setup
+  // ==========================================================================
+  const modal = document.querySelector('#booking-modal');
+  const modalForm = modal?.querySelector('form');
+
+  if (modalForm) {
+    setupFormSync(modalForm, '#modal-qr-code', '#modal-qr-link');
+  }
+
+  // Set minimum date to today on all date pickers
   const today = new Date();
-  date.min = [today.getFullYear(), String(today.getMonth()+1).padStart(2,'0'), String(today.getDate()).padStart(2,'0')].join('-');
-}
-document.querySelectorAll('[data-open-booking]').forEach(button => button.addEventListener('click', () => {
-  if (!modal || modal.open) return;
-  setMinimumDate();
-  if (button.dataset.service) {
-    const choice = [...modal.querySelectorAll('input[name="services"]')].find(item => item.value === button.dataset.service);
-    if (choice) { choice.checked = true; choice.closest('.service-picker').dispatchEvent(new Event('selectionchange')); }
-  }
-  modal.showModal();
-}));
-modal?.addEventListener('click', event => { if (event.target === modal) modal.close(); });
-modal?.querySelector('.close')?.addEventListener('click', () => modal.close());
-modal?.querySelector('form')?.addEventListener('submit', event => {
-  event.preventDefault();
-  setMinimumDate();
-  const form = event.currentTarget;
-  if (!form.reportValidity()) return;
-  const data = new FormData(form);
-  const selected = data.getAll('services');
-  if (!selected.length) {
-    modal.querySelector('.service-error').textContent = 'Please select at least one service.';
-    const details = modal.querySelector('.service-picker details'); details.open = true; details.querySelector('summary').focus();
-    return;
-  }
-  const message = ['Hello Zeva! I would like to request an appointment.', 'Name: '+data.get('name').trim(), 'Services: '+selected.join(', '), 'Preferred date: '+data.get('date'), 'Preferred time: '+(data.get('time') || 'Flexible'), 'Appointment type: '+data.get('type'), 'Additional details: '+(data.get('details').trim() || 'None')].join('\n');
-  window.location.href = 'https://wa.me/918353909431?text='+encodeURIComponent(message);
+  const yyyy = today.getFullYear();
+  const mm = String(today.getMonth() + 1).padStart(2, '0');
+  const dd = String(today.getDate()).padStart(2, '0');
+  const minDateStr = `${yyyy}-${mm}-${dd}`;
+
+  document.querySelectorAll('input[name="date"]').forEach(input => {
+    input.min = minDateStr;
+    if (!input.value) {
+      input.value = minDateStr;
+    }
+  });
+
+  // Service Pre-selection Handler
+  document.querySelectorAll('[data-service]').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const serviceName = btn.getAttribute('data-service');
+      
+      // Update on-page form if exists
+      const onPageService = onPageForm?.querySelector('[name="service"]');
+      if (onPageService) {
+        onPageService.value = serviceName;
+        onPageForm.dispatchEvent(new Event('input'));
+      }
+
+      // Update modal form if exists
+      const modalService = modalForm?.querySelector('[name="service"]');
+      if (modalService) {
+        modalService.value = serviceName;
+        modalForm.dispatchEvent(new Event('input'));
+      }
+
+      // If button has data-scroll-to-book, smooth scroll to on-page booking
+      if (btn.hasAttribute('data-scroll-to-book')) {
+        const bookSection = document.querySelector('#book');
+        if (bookSection) {
+          bookSection.scrollIntoView({ behavior: 'smooth' });
+          return;
+        }
+      }
+
+      // Otherwise open modal if button is data-open-booking
+      if (btn.hasAttribute('data-open-booking') && modal) {
+        if (typeof modal.showModal === 'function') {
+          modal.showModal();
+        } else {
+          modal.setAttribute('open', '');
+        }
+      }
+    });
+  });
+
+  // Modal Open/Close Controls
+  document.querySelectorAll('[data-open-booking]').forEach(btn => {
+    if (btn.hasAttribute('data-service')) return; // handled above
+    btn.addEventListener('click', () => {
+      if (!modal) return;
+      if (typeof modal.showModal === 'function') {
+        modal.showModal();
+      } else {
+        modal.setAttribute('open', '');
+      }
+    });
+  });
+
+  modal?.querySelector('.close')?.addEventListener('click', () => {
+    if (typeof modal.close === 'function') modal.close();
+    else modal.removeAttribute('open');
+  });
+
+  modal?.addEventListener('click', e => {
+    if (e.target === modal) {
+      if (typeof modal.close === 'function') modal.close();
+      else modal.removeAttribute('open');
+    }
+  });
 });
