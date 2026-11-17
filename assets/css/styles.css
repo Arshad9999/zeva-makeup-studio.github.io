@@ -188,8 +188,18 @@ button {
   font-weight: 700;
   letter-spacing: 0.2em;
   text-transform: uppercase;
-  color: var(--rose-200);
+  color: #eed6df;
   margin-top: 4px;
+  opacity: 0.95;
+  transition: color var(--transition-fast);
+}
+
+[data-theme="dark"] .brand-tagline {
+  color: #eed6df !important;
+}
+
+[data-theme="light"] .brand-tagline {
+  color: var(--gold-300);
 }
 
 .nav-links {
@@ -364,6 +374,21 @@ button {
   border-color: var(--gold-300);
   color: var(--gold-300);
   transform: translateY(-2px);
+}
+
+[data-theme="light"] .button-outline,
+[data-theme="light"] .button-quiet {
+  background: rgba(122, 14, 36, 0.06);
+  color: var(--burgundy-800);
+  border: 1.5px solid var(--burgundy-700);
+  font-weight: 700;
+}
+
+[data-theme="light"] .button-outline:hover,
+[data-theme="light"] .button-quiet:hover {
+  background: var(--burgundy-700);
+  border-color: var(--burgundy-700);
+  color: #ffffff;
 }
 
 .button-burgundy {
@@ -551,18 +576,52 @@ h2 {
 }
 
 [data-theme="light"] .mac-glass-panel h1,
-[data-theme="light"] .mac-glass-panel p.eyebrow,
-[data-theme="light"] .mac-glass-panel .hero-trust-strip {
+[data-theme="light"] .mac-glass-panel p.eyebrow {
   color: #1a0409;
+}
+
+/* High-contrast emphasized "you." in light mode */
+[data-theme="light"] .mac-glass-panel h1 em,
+[data-theme="light"] h1 em {
+  color: #8b1538;
+  font-weight: 600;
 }
 
 [data-theme="light"] .mac-glass-panel p.lead {
   color: #4a2833;
 }
 
+/* High-contrast "View Services & Prices" button next to WhatsApp in light mode */
+[data-theme="light"] .mac-glass-panel .button-outline {
+  background: rgba(122, 14, 36, 0.08);
+  border: 1.5px solid var(--burgundy-700);
+  color: var(--burgundy-800);
+  font-weight: 700;
+  box-shadow: 0 2px 6px rgba(122, 14, 36, 0.12);
+}
+
+[data-theme="light"] .mac-glass-panel .button-outline:hover {
+  background: var(--burgundy-700);
+  border-color: var(--burgundy-700);
+  color: #ffffff;
+}
+
+/* High-contrast ticks (checkmarks) in light mode */
 [data-theme="light"] .mac-glass-panel .hero-trust-strip {
   border-top-color: rgba(0, 0, 0, 0.12);
   color: #3b1e27;
+}
+
+[data-theme="light"] .mac-glass-panel .hero-trust-item svg,
+[data-theme="light"] .hero-trust-item svg {
+  color: #15803d; /* vibrant emerald green checkmark */
+  filter: drop-shadow(0 1px 1px rgba(0, 0, 0, 0.08));
+}
+
+[data-theme="light"] .mac-glass-panel .hero-trust-item span,
+[data-theme="light"] .hero-trust-item span {
+  color: #2c0e18;
+  font-weight: 600;
 }
 
 /* macOS Window Chrome Dots */
