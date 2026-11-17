@@ -1,0 +1,28 @@
+name: Merge Arshad pull requests
+
+on:
+  pull_request_target:
+    types: [opened, reopened, synchronize, ready_for_review]
+    branches: [main]
+
+permissions:
+  contents: write
+  pages: write
+
+jobs:
+  merge:
+    if: github.event.pull_request.user.login == 'Arshad9999' && github.event.pull_request.draft == false
+    runs-on: ubuntu-latest
+    steps:
+      - name: Merge the current pull request and request a Pages build
+        env:
+          GH_TOKEN: ${{ github.token }}
+          PR_NUMBER: ${{ github.event.pull_request.number }}
+          HEAD_SHA: ${{ github.event.pull_request.head.sha }}
+        run: |
+          for attempt in 1 2 3 4 5; do
+            if gh api --method PUT "repos/$GITHUB_REPOSITORY/pulls/$PR_NUMBER/merge" -f sha="$HEAD_SHA" -f merge_method=merge; then break; fi
+            if [ "$attempt" -eq 5 ]; then exit 1; fi
+            sleep 5
+          done
+          gh api --method POST "repos/$GITHUB_REPOSITORY/pages/builds"

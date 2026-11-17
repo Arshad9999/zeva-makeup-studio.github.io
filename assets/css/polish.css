@@ -1,0 +1,56 @@
+/* Homepage hero: one photographic canvas with a legible glass content panel. */
+.hero{position:relative;isolation:isolate;display:flex;align-items:center;min-height:620px;padding:72px max(28px,calc((100vw - 1124px)/2));overflow:hidden}
+.hero-art{position:absolute;inset:0;z-index:-1;margin:0;min-height:0;display:block;background:#170d13}
+.hero-art img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:blur(1.4px);transform:scale(1.01);opacity:1}
+.hero-art:after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(12,7,12,.72),rgba(12,7,12,.23) 72%,rgba(12,7,12,.1))}
+.hero-art figcaption{position:absolute;right:30px;bottom:22px;margin:0;color:#fff;z-index:1;text-shadow:0 1px 8px #000}
+.hero-copy{position:relative;z-index:1;width:min(600px,100%);max-width:none;margin:0;padding:clamp(26px,4vw,48px);background:rgba(29,17,25,.67);border:1px solid rgba(242,217,151,.35);border-radius:20px;box-shadow:0 24px 70px #10081066;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.hero h1{font-size:clamp(48px,6vw,76px)}
+.about-layout{gap:48px}.about-image,.studio-photo img{height:auto;aspect-ratio:auto;object-fit:initial;display:block;width:100%}
+.about-image{border-radius:14px}.studio-photo{border-radius:14px}
+/* Services: one aligned row per service, with price and actions together. */
+.menu-group{grid-template-columns:minmax(180px,260px) minmax(0,1fr);gap:36px;scroll-margin-top:165px}
+.service-rows{grid-template-columns:1fr;gap:10px}
+.service-row{display:grid;grid-template-columns:minmax(0,1fr) auto;align-items:center;gap:14px;padding:15px 18px}
+.service-row dt{font-size:15px;line-height:1.35}
+.service-row dd{display:grid;grid-template-columns:minmax(76px,auto) 74px 112px;gap:8px;align-items:center}
+.service-row strong{text-align:right}.service-row .service-book,.service-row .plan-add{width:100%;min-height:44px;text-align:center;white-space:nowrap}
+.service-row .plan-add{border-radius:99px;padding:8px 12px}.service-row .plan-add[aria-pressed=true]{background:#741b34;color:#fff;border-color:#741b34}
+.category-nav{background:#fffaf8;border-bottom:1px solid #e4d4ce}.category-section,.menu-section,.faq{scroll-margin-top:165px}
+/* Keep muted copy and controls readable in both themes. */
+[data-theme=dark] .callout p,[data-theme=dark] .steps p,[data-theme=dark] .faq details p,[data-theme=dark] .site-link{color:#e5ccd6}
+[data-theme=dark] .text-link,[data-theme=dark] .callout a,[data-theme=dark] .site-link a{color:#f4b9c9}
+[data-theme=dark] .note-card p,[data-theme=dark] .note-card strong{color:#33232b}
+[data-theme=dark] .modal-shell{color:#211820}
+@media(max-width:900px){.menu-group{grid-template-columns:1fr;gap:18px}.menu-heading{max-width:650px}}
+@media(max-width:760px){.hero{min-height:760px;padding:320px 20px 42px;align-items:flex-end}.hero-copy{padding:28px 24px}.hero h1{font-size:clamp(45px,11vw,65px)}.hero-art{inset:0;margin:0;min-height:0}.hero-art img{object-position:70% center}.hero-art:after{background:linear-gradient(90deg,rgba(12,7,12,.68),rgba(12,7,12,.3))}.hero-art figcaption{right:18px;bottom:14px;font-size:9px}.about-layout,.studio-section{gap:28px}.about-image{max-width:none}.category-nav{top:72px}}
+@media(max-width:560px){.service-row{grid-template-columns:1fr;gap:10px}.service-row dd{grid-template-columns:minmax(60px,1fr) 74px 110px}.service-row strong{text-align:left}.menu-group{scroll-margin-top:150px}}
+
+/* Carry the homepage's photographic glass treatment through to services. */
+.services-hero{position:relative;isolation:isolate;overflow:hidden;background:#190e16}
+.services-hero .hero-inner{position:relative;display:flex;align-items:center;max-width:none;min-height:620px;margin:0;padding:72px max(28px,calc((100vw - 1124px)/2))}
+.services-hero .hero-inner>div{position:relative;z-index:2;width:min(600px,100%);padding:clamp(26px,4vw,48px);background:rgba(29,17,25,.67);border:1px solid rgba(242,217,151,.35);border-radius:20px;box-shadow:0 24px 70px #10081066;backdrop-filter:blur(14px);-webkit-backdrop-filter:blur(14px)}
+.services-hero .hero-inner h1{font-size:clamp(48px,6vw,76px)}
+.services-hero .hero-inner figure{position:absolute;inset:0;z-index:0;border:0;padding:0;overflow:hidden}
+.services-hero .hero-inner figure:after{content:"";position:absolute;inset:0;border:0;z-index:1;background:linear-gradient(90deg,rgba(12,7,12,.72),rgba(12,7,12,.23) 72%,rgba(12,7,12,.1))}
+.services-hero .hero-inner figure img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;object-position:center;filter:blur(1.4px);transform:scale(1.01)}
+.services-hero .hero-inner figcaption{right:30px;left:auto;bottom:22px}
+/* One selection control per price row; the receipt supplies the booking action. */
+.service-row dd{grid-template-columns:minmax(76px,auto) 126px;gap:12px}
+.service-row:has(.plan-add) .service-book{display:none}
+.service-row .plan-add{background:#fffaf8;border-color:#b99682;color:#741b34}
+.service-row .plan-add[aria-pressed=true]{background:#741b34;border-color:#741b34;color:#fff}
+[data-theme=dark] .service-row .plan-add:not([aria-pressed=true]){background:#49333e;color:#fff3f6;border-color:#cfb1a8}
+@media(max-width:760px){.services-hero .hero-inner{min-height:760px;padding:320px 20px 42px;align-items:flex-end}.services-hero .hero-inner>div{padding:28px 24px}.services-hero .hero-inner h1{font-size:clamp(45px,11vw,65px)}.services-hero .hero-inner figure img{object-position:70% center}.services-hero .hero-inner figure:after{background:linear-gradient(90deg,rgba(12,7,12,.68),rgba(12,7,12,.3))}.services-hero .hero-inner figcaption{right:18px;bottom:14px;font-size:9px}}
+@media(max-width:560px){.service-row dd{grid-template-columns:minmax(60px,1fr) 126px}.service-row .plan-add{justify-self:end}}
+
+/* The appointment form stays visible and shares the current selection. */
+.inline-booking{display:grid;grid-template-columns:minmax(0,.75fr) minmax(0,1.25fr);gap:clamp(28px,5vw,72px);align-items:start;background:#f7ecee}
+.inline-booking-intro h2{max-width:10ch}.inline-booking-intro p{max-width:42ch}
+.inline-booking-form{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:18px;background:#fffaf8;padding:clamp(22px,3vw,36px);border:1px solid #ead9d5;border-radius:18px;box-shadow:0 18px 45px #47152710;color:#211820}
+.inline-booking-form label{display:grid;gap:7px;font-size:14px;font-weight:700}.inline-booking-form input:not([type=checkbox]),.inline-booking-form select,.inline-booking-form textarea{width:100%;padding:12px;border:1px solid #cfbbc0;border-radius:8px;background:#fff;color:#211820;font:inherit}.inline-booking-form textarea{min-height:84px;resize:vertical}.inline-picker,.inline-details,.inline-booking-form .qr-panel{grid-column:1/-1}.inline-booking-form .form-link{align-self:center}.inline-booking-form .qr-panel{margin:0}
+[data-theme=dark] .inline-booking{background:#2f2029}[data-theme=dark] .inline-booking-intro{color:#fff3f6}
+@media(max-width:760px){.inline-booking{grid-template-columns:1fr}.inline-booking-form{grid-template-columns:1fr}.inline-picker,.inline-details,.inline-booking-form .qr-panel{grid-column:auto}}
+
+.receipt.receipt-away{display:none}
+@media(max-width:760px){body:has(.receipt:not([hidden]):not(.receipt-away)) .mobile-booking{display:none}body:has(.receipt:not([hidden]):not(.receipt-away)) .receipt{bottom:12px}}
