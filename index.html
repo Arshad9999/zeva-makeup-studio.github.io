@@ -382,26 +382,56 @@
               <input name="name" autocomplete="name" required maxlength="100" placeholder="e.g. Fatima Khan">
             </label>
 
-            <label>
-              Services *
-              <input name="service" list="onpage-service-options" required maxlength="120" placeholder="Choose or type your desired service...">
-              <datalist id="onpage-service-options">
-                <option value="HD Bridal (₹9,500)">
-                <option value="Air Brush Bridal (₹15,000)">
-                <option value="Engagement Makeup (₹5,500)">
-                <option value="HD Engagement Makeup (₹7,500)">
-                <option value="Reception Makeup (₹6,500)">
-                <option value="Day Party Makeup (₹1,500)">
-                <option value="Haldi Mehandi Makeup (₹2,500)">
-                <option value="Gold Facial (₹1,000)">
-                <option value="Fruit Cleanup (₹600)">
-                <option value="Luxury D-Tan (₹500)">
-                <option value="Hair Spa (₹1,200)">
-                <option value="Layer / Multi Cut (₹500)">
-                <option value="Full Face Threading (₹200)">
-                <option value="Rica Wax Full Hand & Leg (₹1,800)">
-              </datalist>
-            </label>
+                        <div class="field-group">
+              <span class="field-label">Services * <em class="field-hint">(select one or more)</em></span>
+              <details class="service-picker">
+                <summary>Choose one or more services</summary>
+                <div class="service-picker-grid">
+                  <strong class="picker-category">💄 Makeup</strong>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Day Party Makeup (₹1,500)"> Day Party Makeup – ₹1,500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Haldi Mehandi Makeup (₹2,500)"> Haldi/Mehandi Makeup – ₹2,500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="HD Makeup (₹3,500)"> HD Makeup – ₹3,500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Engagement Makeup (₹5,500)"> Engagement Makeup – ₹5,500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="HD Engagement Makeup (₹7,500)"> HD Engagement – ₹7,500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Reception Makeup (₹6,500)"> Reception Makeup – ₹6,500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="HD Bridal (₹9,500)"> HD Bridal – ₹9,500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Engagement Airbrush (₹10,000)"> Engagement Airbrush – ₹10,000</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Air Brush Bridal (₹15,000)"> Airbrush Bridal – ₹15,000</label>
+
+                  <strong class="picker-category">🌿 Skin &amp; Facials</strong>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Bleach (₹200)"> Bleach – ₹200</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="D-Tan (₹200)"> D-Tan – ₹200</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Luxury D-Tan (₹500)"> Luxury D-Tan – ₹500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Cleanup (₹500)"> Cleanup – ₹500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Fruit Cleanup (₹600)"> Fruit Cleanup – ₹600</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Gold Facial (₹1,000)"> Gold Facial – ₹1,000</label>
+
+                  <strong class="picker-category">🪒 Waxing</strong>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Under Arms Wax (₹100)"> Under Arms – ₹100</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Half Leg Wax (₹400)"> Half Leg – ₹400</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Full Leg Wax (₹600)"> Full Leg – ₹600</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Full Face Wax (₹300)"> Full Face – ₹300</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Half Hand Wax (₹250)"> Half Hand – ₹250</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Full Hand Wax (₹400)"> Full Hand – ₹400</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Rica Wax Full Hand (₹800)"> Rica Wax Full Hand – ₹800</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Rica Wax Full Leg (₹1,000)"> Rica Wax Full Leg – ₹1,000</label>
+
+                  <strong class="picker-category">✂️ Threading</strong>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Eyebrow Threading (₹50)"> Eyebrow – ₹50</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Forehead &amp; Chin (₹30)"> Forehead &amp; Chin – ₹30</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Upper Lips (₹30)"> Upper Lips – ₹30</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Full Face Threading (₹200)"> Full Face – ₹200</label>
+
+                  <strong class="picker-category">💇 Hair</strong>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Hair Wash (₹150)"> Hair Wash – ₹150</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Hair Trimming (₹200)"> Hair Trimming – ₹200</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="V &amp; U Shape Cut (₹250)"> V &amp; U Shape Cut – ₹250</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Layer / Multi Cut (₹500)"> Layer/Multi Cut – ₹500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="BOB Cut (₹500)"> BOB Cut – ₹500</label>
+                  <label class="picker-item"><input type="checkbox" name="services" value="Hair Spa (₹1,200)"> Hair Spa – ₹1,200</label>
+                </div>
+              </details>
+            </div>
 
             <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
               <label>
@@ -675,26 +705,56 @@
           <input name="name" autocomplete="name" required maxlength="100" placeholder="e.g. Fatima Khan">
         </label>
 
-        <label>
-          Desired Service *
-          <input name="service" list="modal-service-list" required maxlength="120" placeholder="e.g. HD Bridal, Facial, Hair Spa">
-          <datalist id="modal-service-list">
-            <option value="HD Bridal (₹9,500)">
-            <option value="Air Brush Bridal (₹15,000)">
-            <option value="Engagement Makeup (₹5,500)">
-            <option value="HD Engagement Makeup (₹7,500)">
-            <option value="Reception Makeup (₹6,500)">
-            <option value="Day Party Makeup (₹1,500)">
-            <option value="Haldi Mehandi Makeup (₹2,500)">
-            <option value="Luxury D-Tan (₹500)">
-            <option value="Gold Facial (₹1,000)">
-            <option value="Fruit Cleanup (₹600)">
-            <option value="Hair Spa (₹1,200)">
-            <option value="Layer / Multi Cut (₹500)">
-            <option value="Full Face Threading (₹200)">
-            <option value="Rica Wax Full Hand & Leg">
-          </datalist>
-        </label>
+                <div class="field-group">
+          <span class="field-label">Services * <em class="field-hint">(select one or more)</em></span>
+          <details class="service-picker">
+            <summary>Choose one or more services</summary>
+            <div class="service-picker-grid">
+              <strong class="picker-category">💄 Makeup</strong>
+              <label class="picker-item"><input type="checkbox" name="services" value="Day Party Makeup (₹1,500)"> Day Party Makeup – ₹1,500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Haldi Mehandi Makeup (₹2,500)"> Haldi/Mehandi Makeup – ₹2,500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="HD Makeup (₹3,500)"> HD Makeup – ₹3,500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Engagement Makeup (₹5,500)"> Engagement Makeup – ₹5,500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="HD Engagement Makeup (₹7,500)"> HD Engagement – ₹7,500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Reception Makeup (₹6,500)"> Reception Makeup – ₹6,500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="HD Bridal (₹9,500)"> HD Bridal – ₹9,500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Engagement Airbrush (₹10,000)"> Engagement Airbrush – ₹10,000</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Air Brush Bridal (₹15,000)"> Airbrush Bridal – ₹15,000</label>
+
+              <strong class="picker-category">🌿 Skin &amp; Facials</strong>
+              <label class="picker-item"><input type="checkbox" name="services" value="Bleach (₹200)"> Bleach – ₹200</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="D-Tan (₹200)"> D-Tan – ₹200</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Luxury D-Tan (₹500)"> Luxury D-Tan – ₹500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Cleanup (₹500)"> Cleanup – ₹500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Fruit Cleanup (₹600)"> Fruit Cleanup – ₹600</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Gold Facial (₹1,000)"> Gold Facial – ₹1,000</label>
+
+              <strong class="picker-category">🪒 Waxing</strong>
+              <label class="picker-item"><input type="checkbox" name="services" value="Under Arms Wax (₹100)"> Under Arms – ₹100</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Half Leg Wax (₹400)"> Half Leg – ₹400</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Full Leg Wax (₹600)"> Full Leg – ₹600</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Full Face Wax (₹300)"> Full Face – ₹300</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Half Hand Wax (₹250)"> Half Hand – ₹250</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Full Hand Wax (₹400)"> Full Hand – ₹400</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Rica Wax Full Hand (₹800)"> Rica Wax Full Hand – ₹800</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Rica Wax Full Leg (₹1,000)"> Rica Wax Full Leg – ₹1,000</label>
+
+              <strong class="picker-category">✂️ Threading</strong>
+              <label class="picker-item"><input type="checkbox" name="services" value="Eyebrow Threading (₹50)"> Eyebrow – ₹50</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Forehead &amp; Chin (₹30)"> Forehead &amp; Chin – ₹30</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Upper Lips (₹30)"> Upper Lips – ₹30</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Full Face Threading (₹200)"> Full Face – ₹200</label>
+
+              <strong class="picker-category">💇 Hair</strong>
+              <label class="picker-item"><input type="checkbox" name="services" value="Hair Wash (₹150)"> Hair Wash – ₹150</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Hair Trimming (₹200)"> Hair Trimming – ₹200</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="V &amp; U Shape Cut (₹250)"> V &amp; U Shape Cut – ₹250</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Layer / Multi Cut (₹500)"> Layer/Multi Cut – ₹500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="BOB Cut (₹500)"> BOB Cut – ₹500</label>
+              <label class="picker-item"><input type="checkbox" name="services" value="Hair Spa (₹1,200)"> Hair Spa – ₹1,200</label>
+            </div>
+          </details>
+        </div>
 
         <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 12px;">
           <label>

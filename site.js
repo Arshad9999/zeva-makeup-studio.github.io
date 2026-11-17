@@ -56,7 +56,12 @@ document.addEventListener('DOMContentLoaded', () => {
   // ==========================================================================
   function generateWhatsAppUrl(formData) {
     const name = (formData.get('name') || '').toString().trim();
-    const service = (formData.get('service') || '').toString().trim();
+    // Support multi-select checkboxes (name="services") OR legacy single input (name="service")
+    const servicesArr = formData.getAll('services').filter(Boolean);
+    const serviceFallback = (formData.get('service') || '').toString().trim();
+    const serviceText = servicesArr.length > 0
+      ? servicesArr.join(', ')
+      : (serviceFallback || 'General Bridal & Salon Consultation');
     const date = (formData.get('date') || '').toString();
     const time = (formData.get('time') || 'Flexible').toString();
     const type = (formData.get('type') || 'At the salon').toString();
@@ -67,7 +72,7 @@ document.addEventListener('DOMContentLoaded', () => {
       'I would like to request an appointment:',
       '',
       `👤 *Name:* ${name || 'Prospective Client'}`,
-      `💄 *Service:* ${service || 'General Bridal & Salon Consultation'}`,
+      `💄 *Services:* ${serviceText}`,
       `📅 *Preferred Date:* ${date || 'To be confirmed'}`,
       `⏰ *Preferred Time:* ${time || 'Flexible'}`,
       `📍 *Appointment Type:* ${type}`,
@@ -169,23 +174,42 @@ document.addEventListener('DOMContentLoaded', () => {
   });
 
   // Service Pre-selection Handler
+  function preSelectService(formEl, serviceName) {
+    if (!formEl || !serviceName) return;
+    // Try checkbox multi-select first
+    const checkbox = formEl.querySelector(`input[type="checkbox"][name="services"][value="${serviceName}"]`);
+    if (checkbox) {
+      checkbox.checked = true;
+      formEl.dispatchEvent(new Event('change'));
+      return;
+    }
+    // Partial match — try to find checkbox whose value starts with the service name
+    const allCheckboxes = formEl.querySelectorAll('input[type="checkbox"][name="services"]');
+    let matched = false;
+    allCheckboxes.forEach(cb => {
+      if (cb.value.startsWith(serviceName)) {
+        cb.checked = true;
+        matched = true;
+      }
+    });
+    if (matched) { formEl.dispatchEvent(new Event('change')); return; }
+    // Legacy single text input fallback
+    const textInput = formEl.querySelector('[name="service"]');
+    if (textInput) {
+      textInput.value = serviceName;
+      formEl.dispatchEvent(new Event('input'));
+    }
+  }
+
   document.querySelectorAll('[data-service]').forEach(btn => {
     btn.addEventListener('click', () => {
       const serviceName = btn.getAttribute('data-service');
       
       // Update on-page form if exists
-      const onPageService = onPageForm?.querySelector('[name="service"]');
-      if (onPageService) {
-        onPageService.value = serviceName;
-        onPageForm.dispatchEvent(new Event('input'));
-      }
+      if (onPageForm) preSelectService(onPageForm, serviceName);
 
       // Update modal form if exists
-      const modalService = modalForm?.querySelector('[name="service"]');
-      if (modalService) {
-        modalService.value = serviceName;
-        modalForm.dispatchEvent(new Event('input'));
-      }
+      if (modalForm) preSelectService(modalForm, serviceName);
 
       // If button has data-scroll-to-book, smooth scroll to on-page booking
       if (btn.hasAttribute('data-scroll-to-book')) {
