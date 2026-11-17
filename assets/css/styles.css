@@ -1,11 +1,11 @@
 /* ==========================================================================
-   ZEVA MAKEUP STUDIO & SALON — LUXURY DESIGN SYSTEM
+   ZEVA MAKEUP STUDIO & SALON — LUXURY DESIGN SYSTEM (Light & Dark Mode)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,500;0,600;0,700;1,400;1,600&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Brand Palette: Royal Burgundy, Champagne Gold & Rosewater Cream */
+  /* Brand Palette (Default Light Theme) */
   --burgundy-950: #1b0409;
   --burgundy-900: #2d0710;
   --burgundy-800: #4a0e1c;
@@ -23,11 +23,24 @@
   --rose-100: #faedf1;
   --rose-200: #f5dce4;
   --rose-300: #edc2cf;
-  
-  --ink-900: #180f14;
-  --ink-800: #2b1d24;
-  --ink-600: #57464e;
-  --ink-400: #84727b;
+
+  /* Semantic Theme Variables */
+  --bg-body: #fdf8f9;
+  --bg-card: #ffffff;
+  --bg-card-alt: #fcf1f4;
+  --bg-header: rgba(27, 4, 9, 0.94);
+  --bg-input: #ffffff;
+  --bg-section-soft: linear-gradient(180deg, #faedf1 0%, #fdf8f9 100%);
+  --bg-banner: radial-gradient(circle at 10% 50%, #4a0e1c 0%, #1e050b 70%, #1b0409 100%);
+
+  --text-main: #180f14;
+  --text-lead: #3a2530;
+  --text-muted: #6b5c64;
+  --text-light: #8e7c85;
+
+  --border-subtle: #f0e2e7;
+  --border-input: #e0cad2;
+  --border-gold: #e5cd9b;
 
   --white: #ffffff;
   --whatsapp-green: #25d366;
@@ -44,17 +57,47 @@
   --shadow-lg: 0 20px 48px rgba(45, 7, 16, 0.12);
   --shadow-gold: 0 8px 24px var(--gold-glow);
 
-  /* Borders & Radius */
+  /* Radius */
   --radius-sm: 8px;
   --radius-md: 14px;
   --radius-lg: 20px;
   --radius-pill: 9999px;
-  --border-subtle: 1px solid var(--rose-200);
-  --border-gold: 1px solid var(--gold-400);
 
   /* Transitions */
   --transition-fast: 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* ==========================================================================
+   DARK THEME OVERRIDES
+   ========================================================================== */
+
+[data-theme="dark"] {
+  --bg-body: #100407;
+  --bg-card: #1c080f;
+  --bg-card-alt: #260c16;
+  --bg-header: rgba(16, 4, 7, 0.96);
+  --bg-input: #230a13;
+  --bg-section-soft: linear-gradient(180deg, #18060c 0%, #100407 100%);
+  --bg-banner: radial-gradient(circle at 10% 50%, #360813 0%, #170308 70%, #0d0205 100%);
+
+  --text-main: #faedf1;
+  --text-lead: #eed1dc;
+  --text-muted: #b89fa9;
+  --text-light: #d6b5c2;
+
+  --border-subtle: #38121d;
+  --border-input: #4d1c2b;
+  --border-gold: #c5a059;
+
+  --rose-50: #100407;
+  --rose-100: #1a060d;
+  --rose-200: #2e0d18;
+
+  --shadow-xs: 0 2px 6px rgba(0, 0, 0, 0.3);
+  --shadow-sm: 0 4px 14px rgba(0, 0, 0, 0.4);
+  --shadow-md: 0 10px 28px rgba(0, 0, 0, 0.55);
+  --shadow-lg: 0 20px 48px rgba(0, 0, 0, 0.7);
 }
 
 /* Base & Reset */
@@ -69,13 +112,14 @@ html {
 
 body {
   margin: 0;
-  background-color: var(--rose-50);
-  color: var(--ink-900);
+  background-color: var(--bg-body);
+  color: var(--text-main);
   font-family: var(--font-sans);
   font-size: 16px;
   line-height: 1.65;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  transition: background-color var(--transition-normal), color var(--transition-normal);
 }
 
 img {
@@ -106,7 +150,7 @@ button {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(27, 4, 9, 0.94);
+  background: var(--bg-header);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
   border-bottom: 1px solid rgba(197, 160, 89, 0.28);
@@ -121,7 +165,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  gap: 20px;
+  gap: 16px;
 }
 
 .brand-wrapper {
@@ -151,7 +195,7 @@ button {
 .nav-links {
   display: flex;
   align-items: center;
-  gap: 28px;
+  gap: 24px;
 }
 
 .nav-links a {
@@ -188,7 +232,28 @@ button {
 .nav-actions {
   display: flex;
   align-items: center;
-  gap: 14px;
+  gap: 12px;
+}
+
+.theme-toggle {
+  background: rgba(255, 255, 255, 0.07);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  color: var(--gold-300);
+  border-radius: var(--radius-pill);
+  padding: 7px 13px;
+  font-size: 12px;
+  font-weight: 700;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  transition: all var(--transition-fast);
+}
+
+.theme-toggle:hover {
+  background: rgba(197, 160, 89, 0.2);
+  border-color: var(--gold-400);
+  transform: translateY(-1px);
 }
 
 .nav-phone {
@@ -288,7 +353,7 @@ button {
 .button-quiet,
 .button-outline {
   background: transparent;
-  color: var(--rose-50);
+  color: var(--gold-300);
   border: 1px solid rgba(244, 228, 188, 0.4);
   box-shadow: none;
 }
@@ -314,12 +379,6 @@ button {
   transform: translateY(-2px);
 }
 
-.button-light {
-  background: var(--gold-300);
-  color: var(--burgundy-950);
-  border-color: var(--gold-400);
-}
-
 /* ==========================================================================
    TYPOGRAPHY & UTILITIES
    ========================================================================== */
@@ -337,7 +396,11 @@ button {
 }
 
 .eyebrow.ink {
-  color: var(--burgundy-700);
+  color: var(--burgundy-600);
+}
+
+[data-theme="dark"] .eyebrow.ink {
+  color: var(--gold-400);
 }
 
 .eyebrow::before {
@@ -381,7 +444,7 @@ h2 {
 }
 
 .lead.dark {
-  color: var(--ink-600);
+  color: var(--text-lead);
 }
 
 .section {
@@ -392,9 +455,9 @@ h2 {
 
 .section.soft {
   max-width: none;
-  background: linear-gradient(180deg, var(--rose-100) 0%, var(--rose-50) 100%);
-  border-top: 1px solid var(--rose-200);
-  border-bottom: 1px solid var(--rose-200);
+  background: var(--bg-section-soft);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .section-inner {
@@ -414,7 +477,7 @@ h2 {
 }
 
 .section-subtitle {
-  color: var(--ink-600);
+  color: var(--text-muted);
   font-size: 17px;
   margin: -6px 0 0 0;
 }
@@ -559,13 +622,12 @@ h2 {
   color: #eed6df;
 }
 
-/* Floating Testimonial Pill on Hero */
 .hero-floating-card {
   position: absolute;
   top: -20px;
   right: -20px;
   background: rgba(255, 255, 255, 0.95);
-  color: var(--ink-900);
+  color: #180f14;
   padding: 14px 18px;
   border-radius: var(--radius-md);
   box-shadow: var(--shadow-lg);
@@ -623,6 +685,240 @@ h2 {
 }
 
 /* ==========================================================================
+   ON-PAGE APPOINTMENT BOOKING SECTION (With Visible QR Code)
+   ========================================================================== */
+
+.appointment-booking-section {
+  padding: 90px 24px;
+}
+
+.appointment-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.05fr;
+  gap: 60px;
+  align-items: start;
+}
+
+.appointment-info h2 {
+  font-size: clamp(38px, 5vw, 60px);
+  margin: 0 0 16px 0;
+  color: var(--text-main);
+}
+
+.appointment-info .lead {
+  color: var(--text-lead);
+  margin-bottom: 30px;
+}
+
+.appointment-meta-list {
+  list-style: none;
+  padding: 0;
+  margin: 0 0 35px 0;
+  display: grid;
+  gap: 16px;
+}
+
+.appointment-meta-item {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  background: var(--bg-card);
+  padding: 16px 18px;
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border-subtle);
+  box-shadow: var(--shadow-xs);
+}
+
+.appointment-meta-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: var(--bg-card-alt);
+  display: grid;
+  place-items: center;
+  font-size: 18px;
+  color: var(--burgundy-700);
+  flex-shrink: 0;
+}
+
+[data-theme="dark"] .appointment-meta-icon {
+  color: var(--gold-400);
+}
+
+.appointment-meta-text strong {
+  display: block;
+  font-size: 14px;
+  color: var(--text-main);
+}
+
+.appointment-meta-text span {
+  font-size: 13px;
+  color: var(--text-muted);
+}
+
+/* Booking Card Panel */
+.booking-card-panel {
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
+  border-top: 5px solid var(--gold-500);
+  border-radius: var(--radius-lg);
+  padding: 36px 30px;
+  box-shadow: var(--shadow-lg);
+  transition: all var(--transition-normal);
+}
+
+.booking-card-panel h3 {
+  font-size: 26px;
+  color: var(--text-main);
+  margin: 0 0 6px 0;
+}
+
+.booking-card-panel p.sub {
+  font-size: 13px;
+  color: var(--text-muted);
+  margin: 0 0 22px 0;
+}
+
+/* Form inputs */
+.quick-form {
+  display: grid;
+  gap: 16px;
+}
+
+.quick-form label {
+  display: grid;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 700;
+  color: var(--text-main);
+}
+
+.quick-form input,
+.quick-form select,
+.quick-form textarea {
+  font-family: inherit;
+  font-size: 14px;
+  padding: 12px 14px;
+  border: 1px solid var(--border-input);
+  border-radius: var(--radius-sm);
+  background: var(--bg-input);
+  color: var(--text-main);
+  transition: all var(--transition-fast);
+}
+
+.quick-form input:focus,
+.quick-form select:focus,
+.quick-form textarea:focus {
+  outline: none;
+  border-color: var(--gold-500);
+  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.25);
+}
+
+.quick-form textarea {
+  min-height: 75px;
+  resize: vertical;
+}
+
+.form-link {
+  font-size: 12px;
+  color: var(--burgundy-600);
+  font-weight: 700;
+  text-align: center;
+  margin-top: 6px;
+  display: block;
+}
+
+[data-theme="dark"] .form-link {
+  color: var(--gold-400);
+}
+
+/* ==========================================================================
+   QR CODE BOX (GUARANTEED VISIBILITY & SHARP RENDERING)
+   ========================================================================== */
+
+.qr-box-container {
+  margin-top: 24px;
+  background: var(--bg-card-alt);
+  border: 1px dashed var(--gold-500);
+  border-radius: var(--radius-md);
+  padding: 24px 20px;
+  text-align: center;
+  position: relative;
+  transition: all var(--transition-normal);
+}
+
+.qr-box-header {
+  margin-bottom: 14px;
+}
+
+.qr-box-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: var(--text-main);
+  margin: 0 0 4px 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.qr-box-title span.qr-icon {
+  color: var(--whatsapp-green);
+  font-size: 18px;
+}
+
+.qr-box-desc {
+  font-size: 12px;
+  color: var(--text-muted);
+  line-height: 1.45;
+  margin: 0 auto;
+  max-width: 320px;
+}
+
+.qr-code-frame {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  background: #ffffff;
+  padding: 14px;
+  border-radius: var(--radius-md);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.12);
+  border: 2px solid var(--gold-400);
+  margin: 14px auto 14px auto;
+  min-width: 178px;
+  min-height: 178px;
+}
+
+.qr-code-frame img,
+.qr-code-frame canvas {
+  display: block !important;
+  margin: 0 auto;
+  width: 150px !important;
+  height: 150px !important;
+  image-rendering: pixelated;
+}
+
+.qr-action-link {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 750;
+  color: var(--burgundy-700);
+  text-decoration: underline;
+  text-underline-offset: 4px;
+  transition: color var(--transition-fast);
+}
+
+[data-theme="dark"] .qr-action-link {
+  color: var(--gold-300);
+}
+
+.qr-action-link:hover {
+  color: var(--gold-500);
+}
+
+/* ==========================================================================
    TRUST PILLARS / WHY CHOOSE ZEVA
    ========================================================================== */
 
@@ -634,8 +930,8 @@ h2 {
 }
 
 .pillar-card {
-  background: var(--white);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 30px 24px;
   box-shadow: var(--shadow-xs);
@@ -654,14 +950,18 @@ h2 {
   width: 52px;
   height: 52px;
   border-radius: var(--radius-md);
-  background: var(--rose-100);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border-subtle);
   display: grid;
   place-items: center;
   color: var(--burgundy-700);
   margin-bottom: 20px;
   font-size: 22px;
   transition: all var(--transition-fast);
+}
+
+[data-theme="dark"] .pillar-icon-box {
+  color: var(--gold-300);
 }
 
 .pillar-card:hover .pillar-icon-box {
@@ -673,11 +973,11 @@ h2 {
 .pillar-card h3 {
   font-size: 20px;
   margin: 0 0 10px 0;
-  color: var(--burgundy-900);
+  color: var(--text-main);
 }
 
 .pillar-card p {
-  color: var(--ink-600);
+  color: var(--text-muted);
   font-size: 14px;
   line-height: 1.55;
   margin: 0;
@@ -695,8 +995,8 @@ h2 {
 }
 
 .showcase-card {
-  background: var(--white);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-sm);
@@ -755,11 +1055,11 @@ h2 {
 .showcase-card-body h3 {
   font-size: 24px;
   margin: 0 0 8px 0;
-  color: var(--burgundy-900);
+  color: var(--text-main);
 }
 
 .showcase-card-body p {
-  color: var(--ink-600);
+  color: var(--text-muted);
   font-size: 14px;
   line-height: 1.55;
   margin: 0 0 20px 0;
@@ -771,33 +1071,37 @@ h2 {
   justify-content: space-between;
   align-items: center;
   padding-top: 16px;
-  border-top: 1px solid var(--rose-200);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .showcase-price {
   font-size: 18px;
   font-weight: 800;
-  color: var(--burgundy-700);
+  color: var(--gold-500);
 }
 
 .showcase-price small {
   font-size: 12px;
   font-weight: 500;
-  color: var(--ink-400);
+  color: var(--text-muted);
 }
 
 .showcase-link {
   font-size: 13px;
   font-weight: 700;
-  color: var(--burgundy-700);
+  color: var(--burgundy-600);
   display: inline-flex;
   align-items: center;
   gap: 4px;
   transition: color var(--transition-fast);
 }
 
+[data-theme="dark"] .showcase-link {
+  color: var(--gold-300);
+}
+
 .showcase-link:hover {
-  color: var(--gold-600);
+  color: var(--gold-500);
 }
 
 /* ==========================================================================
@@ -812,12 +1116,12 @@ h2 {
 }
 
 .about-content h2 {
-  color: var(--burgundy-900);
+  color: var(--text-main);
 }
 
 .about-lead {
   font-size: 18px;
-  color: var(--ink-800);
+  color: var(--text-lead);
   line-height: 1.7;
   margin-bottom: 24px;
 }
@@ -836,7 +1140,7 @@ h2 {
   gap: 10px;
   font-size: 14px;
   font-weight: 600;
-  color: var(--ink-800);
+  color: var(--text-main);
 }
 
 .about-features-list li svg {
@@ -852,8 +1156,8 @@ h2 {
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-lg);
-  border: 1px solid var(--rose-200);
-  background: var(--white);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card);
 }
 
 .about-photo-card img {
@@ -964,8 +1268,8 @@ h2 {
 }
 
 .testimonial-card {
-  background: var(--white);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 32px 26px;
   box-shadow: var(--shadow-xs);
@@ -992,7 +1296,7 @@ h2 {
   font-family: var(--font-serif);
   font-size: 18px;
   line-height: 1.5;
-  color: var(--burgundy-950);
+  color: var(--text-main);
   font-style: italic;
   margin: 0 0 20px 0;
   flex-grow: 1;
@@ -1003,30 +1307,31 @@ h2 {
   align-items: center;
   gap: 12px;
   padding-top: 16px;
-  border-top: 1px solid var(--rose-100);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .testimonial-avatar {
   width: 42px;
   height: 42px;
   border-radius: 50%;
-  background: var(--rose-200);
-  color: var(--burgundy-800);
+  background: var(--bg-card-alt);
+  color: var(--gold-500);
   font-weight: 700;
   font-size: 14px;
   display: grid;
   place-items: center;
+  border: 1px solid var(--border-subtle);
 }
 
 .testimonial-meta strong {
   display: block;
   font-size: 14px;
-  color: var(--ink-900);
+  color: var(--text-main);
 }
 
 .testimonial-meta span {
   font-size: 12px;
-  color: var(--ink-400);
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -1041,8 +1346,8 @@ h2 {
 }
 
 .social-link-card {
-  background: var(--white);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 20px;
   display: flex;
@@ -1055,7 +1360,7 @@ h2 {
 .social-link-card:hover {
   transform: translateY(-3px);
   box-shadow: var(--shadow-sm);
-  border-color: var(--burgundy-600);
+  border-color: var(--gold-400);
 }
 
 .social-icon-circle {
@@ -1077,12 +1382,12 @@ h2 {
 .social-link-info strong {
   display: block;
   font-size: 14px;
-  color: var(--burgundy-900);
+  color: var(--text-main);
 }
 
 .social-link-info span {
   font-size: 12px;
-  color: var(--ink-400);
+  color: var(--text-muted);
 }
 
 /* ==========================================================================
@@ -1090,7 +1395,7 @@ h2 {
    ========================================================================== */
 
 .booking-banner-wrap {
-  background: radial-gradient(circle at 10% 50%, #4a0e1c 0%, #1e050b 70%, var(--burgundy-950) 100%);
+  background: var(--bg-banner);
   color: var(--white);
   border-radius: var(--radius-lg);
   padding: 65px 50px;
@@ -1196,27 +1501,29 @@ footer {
   padding: 0;
   border: 0;
   background: transparent;
-  max-width: min(540px, calc(100vw - 32px));
+  max-width: min(580px, calc(100vw - 32px));
   border-radius: var(--radius-lg);
   box-shadow: 0 25px 80px rgba(0, 0, 0, 0.6);
 }
 
 .booking-modal::backdrop {
-  background: rgba(20, 3, 7, 0.85);
+  background: rgba(14, 3, 6, 0.88);
   backdrop-filter: blur(8px);
 }
 
 .modal-shell {
-  background: var(--white);
+  background: var(--bg-card);
   border-radius: var(--radius-lg);
   border-top: 5px solid var(--gold-500);
   padding: 36px 32px;
   position: relative;
+  max-height: 90vh;
+  overflow-y: auto;
 }
 
 .modal-shell h2 {
   font-size: 32px;
-  color: var(--burgundy-900);
+  color: var(--text-main);
   margin: 0 0 8px 0;
 }
 
@@ -1227,12 +1534,12 @@ footer {
   width: 36px;
   height: 36px;
   border-radius: 50%;
-  border: 1px solid var(--rose-200);
-  background: var(--rose-50);
+  border: 1px solid var(--border-subtle);
+  background: var(--bg-card-alt);
   font-size: 22px;
   line-height: 1;
   cursor: pointer;
-  color: var(--burgundy-900);
+  color: var(--text-main);
   display: grid;
   place-items: center;
   transition: all var(--transition-fast);
@@ -1243,56 +1550,8 @@ footer {
   color: var(--white);
 }
 
-.quick-form {
-  display: grid;
-  gap: 16px;
-  margin-top: 22px;
-}
-
-.quick-form label {
-  display: grid;
-  gap: 6px;
-  font-size: 13px;
-  font-weight: 700;
-  color: var(--ink-800);
-}
-
-.quick-form input,
-.quick-form select,
-.quick-form textarea {
-  font-family: inherit;
-  font-size: 14px;
-  padding: 12px 14px;
-  border: 1px solid var(--rose-300);
-  border-radius: var(--radius-sm);
-  background: var(--white);
-  color: var(--ink-900);
-  transition: all var(--transition-fast);
-}
-
-.quick-form input:focus,
-.quick-form select:focus,
-.quick-form textarea:focus {
-  outline: none;
-  border-color: var(--gold-500);
-  box-shadow: 0 0 0 3px rgba(197, 160, 89, 0.2);
-}
-
-.quick-form textarea {
-  min-height: 75px;
-  resize: vertical;
-}
-
-.form-link {
-  font-size: 12px;
-  color: var(--burgundy-700);
-  font-weight: 700;
-  text-align: center;
-  margin-top: 8px;
-}
-
 /* ==========================================================================
-   MOBILE FLOATING BOOKING BAR (Conversion Booster)
+   MOBILE FLOATING BOOKING BAR
    ========================================================================== */
 
 .mobile-floating-bar {
@@ -1302,11 +1561,12 @@ footer {
   left: 0;
   right: 0;
   z-index: 99;
-  background: rgba(255, 255, 255, 0.95);
-  backdrop-filter: blur(12px);
+  background: var(--bg-header);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
   padding: 10px 16px calc(10px + env(safe-area-inset-bottom)) 16px;
-  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.15);
-  border-top: 1px solid var(--rose-200);
+  box-shadow: 0 -4px 20px rgba(0, 0, 0, 0.25);
+  border-top: 1px solid rgba(197, 160, 89, 0.35);
 }
 
 .mobile-floating-inner {
@@ -1327,9 +1587,9 @@ footer {
   flex: 0 0 46px;
   height: 46px;
   border-radius: var(--radius-pill);
-  background: var(--rose-100);
-  border: 1px solid var(--rose-300);
-  color: var(--burgundy-800);
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(197, 160, 89, 0.35);
+  color: var(--gold-300);
   display: grid;
   place-items: center;
   font-size: 18px;
@@ -1352,6 +1612,10 @@ body:has(dialog[open]) .mobile-floating-bar {
   .hero-art-wrapper {
     max-width: 520px;
     margin: 0 auto;
+  }
+  .appointment-grid {
+    grid-template-columns: 1fr;
+    gap: 40px;
   }
   .pillars-grid {
     grid-template-columns: repeat(2, 1fr);
@@ -1409,7 +1673,7 @@ body:has(dialog[open]) .mobile-floating-bar {
     top: 74px;
     left: 0;
     right: 0;
-    background: var(--burgundy-950);
+    background: var(--bg-header);
     padding: 24px;
     border-bottom: 1px solid rgba(197, 160, 89, 0.25);
     gap: 18px;
@@ -1434,6 +1698,9 @@ body:has(dialog[open]) .mobile-floating-bar {
   .hero-floating-card {
     right: 0;
     top: -10px;
+  }
+  .booking-card-panel {
+    padding: 24px 18px;
   }
 }
 

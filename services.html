@@ -35,20 +35,23 @@
       <div class="nav-links">
         <a href="/">Home</a>
         <a href="services.html" class="active">Services &amp; Pricing</a>
-        <a href="/#standards">The Zeva Standard</a>
+        <a href="/#standards">Why Zeva</a>
         <a href="/#lookbook">Lookbook</a>
+        <a href="/#book">Book Appointment</a>
         <a href="/#about">About</a>
         <a href="/#testimonials">Reviews</a>
-        <a href="/#contact">Contact</a>
       </div>
 
       <div class="nav-actions">
-        <a class="nav-phone" href="tel:+918353909431" title="Call Zeva">
+        <!-- Dark / Light Mode Switcher -->
+        <button class="theme-toggle" type="button" aria-label="Toggle dark mode">☾ Dark</button>
+
+        <a class="nav-phone" href="tel:+918353909431" title="Call Zeva Studio">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"></path></svg>
-          <span>Call Us</span>
+          <span>Call</span>
         </a>
         <button class="nav-book" type="button" data-open-booking>
-          <span>Book Appointment</span>
+          <span>Book now</span>
         </button>
         <button class="nav-toggle" type="button" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
       </div>
@@ -412,6 +415,7 @@
           <li><a href="services.html">Services &amp; Pricing</a></li>
           <li><a href="/#standards">The Zeva Standard</a></li>
           <li><a href="/#lookbook">Bridal Lookbook</a></li>
+          <li><a href="/#book">Book Appointment</a></li>
           <li><a href="/#testimonials">Client Reviews</a></li>
         </ul>
       </div>
@@ -441,13 +445,13 @@
     </div>
   </footer>
 
-  <!-- Appointment Booking Modal Dialog -->
+  <!-- Appointment Booking Modal Dialog with Live QR Code -->
   <dialog class="booking-modal" id="booking-modal" aria-labelledby="booking-title">
     <form method="dialog" class="modal-shell">
       <button class="close" type="button" aria-label="Close booking form">&times;</button>
       <p class="eyebrow ink">Instant Appointment Request</p>
       <h2 id="booking-title">Book via WhatsApp</h2>
-      <p style="font-size: 13px; color: var(--ink-600); margin: 0 0 16px 0;">Fill in your details below and WhatsApp will open with your customized appointment message ready to send.</p>
+      <p style="font-size: 13px; color: var(--text-muted); margin: 0 0 16px 0;">Fill in your details below and WhatsApp will open with your customized appointment message ready to send.</p>
       
       <div class="quick-form">
         <label>
@@ -457,8 +461,8 @@
 
         <label>
           Desired Service *
-          <input name="service" list="service-list" required maxlength="120" placeholder="e.g. HD Bridal, Facial, Hair Spa">
-          <datalist id="service-list">
+          <input name="service" list="modal-service-list" required maxlength="120" placeholder="e.g. HD Bridal, Facial, Hair Spa">
+          <datalist id="modal-service-list">
             <option value="HD Bridal (₹9,500)">
             <option value="Air Brush Bridal (₹15,000)">
             <option value="Engagement Makeup (₹5,500)">
@@ -490,8 +494,8 @@
         <label>
           Appointment Location *
           <select name="type" required>
-            <option value="At the salon (Dubagga)">At Zeva Salon (Dubagga, Lucknow)</option>
-            <option value="Freelance / At My Venue">Freelance / At My Venue (Lucknow)</option>
+            <option value="At the salon">At Zeva Salon (Dubagga, Lucknow)</option>
+            <option value="Freelance / another location">Freelance / at another venue</option>
           </select>
         </label>
 
@@ -507,6 +511,23 @@
         <a class="form-link" href="https://docs.google.com/forms/d/e/1FAIpQLSdlE_HU9J3QaApyy7PPLVn61SA3UjmPYv734FfahQmQXUkTKg/viewform?usp=publish-editor" target="_blank" rel="noopener noreferrer">
           Prefer Google Forms instead? Click here &rarr;
         </a>
+
+        <!-- MODAL LIVE QR CODE CONTAINER -->
+        <div class="qr-box-container">
+          <div class="qr-box-header">
+            <div class="qr-box-title">
+              <span class="qr-icon">📱</span>
+              <span>Scan to continue in WhatsApp</span>
+            </div>
+            <p class="qr-box-desc">Scan with your smartphone to send this appointment request directly on WhatsApp.</p>
+          </div>
+          <div id="modal-qr-code" class="qr-code-frame"></div>
+          <div>
+            <a id="modal-qr-link" class="qr-action-link" href="https://wa.me/918353909431" target="_blank" rel="noopener noreferrer">
+              Open the same WhatsApp request &nearr;
+            </a>
+          </div>
+        </div>
       </div>
     </form>
   </dialog>
@@ -524,6 +545,7 @@
     </div>
   </div>
 
-  <script src="assets/js/site.js?v=3"></script>
+  <script src="assets/js/qrcode.min.js"></script>
+  <script src="assets/js/site.js?v=4"></script>
 </body>
 </html>

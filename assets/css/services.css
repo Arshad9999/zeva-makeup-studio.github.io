@@ -1,5 +1,5 @@
 /* ==========================================================================
-   ZEVA MAKEUP STUDIO & SALON — SERVICES PAGE LUXURY STYLING
+   ZEVA MAKEUP STUDIO & SALON — SERVICES PAGE LUXURY STYLING (Light & Dark)
    ========================================================================== */
 
 /* Hero for Services */
@@ -86,10 +86,10 @@
   position: sticky;
   top: 74px;
   z-index: 40;
-  background: rgba(253, 248, 249, 0.95);
+  background: var(--bg-card);
   backdrop-filter: blur(14px);
   -webkit-backdrop-filter: blur(14px);
-  border-bottom: 1px solid var(--rose-200);
+  border-bottom: 1px solid var(--border-subtle);
   box-shadow: 0 4px 16px rgba(45, 7, 16, 0.04);
 }
 
@@ -114,9 +114,9 @@
   letter-spacing: 0.03em;
   padding: 8px 18px;
   border-radius: var(--radius-pill);
-  background: var(--white);
-  border: 1px solid var(--rose-200);
-  color: var(--burgundy-800);
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
   transition: all var(--transition-fast);
 }
 
@@ -141,8 +141,8 @@
 }
 
 .category-card {
-  background: var(--white);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-xs);
@@ -180,18 +180,18 @@
   font-size: 11px;
   font-weight: 800;
   letter-spacing: 0.12em;
-  color: var(--gold-600);
+  color: var(--gold-500);
 }
 
 .category-card h3 {
   font-size: 22px;
   margin: 6px 0;
-  color: var(--burgundy-900);
+  color: var(--text-main);
 }
 
 .category-card p {
   font-size: 13px;
-  color: var(--ink-600);
+  color: var(--text-muted);
   margin: 0 0 10px 0;
   line-height: 1.45;
 }
@@ -199,23 +199,27 @@
 .category-card strong {
   font-size: 14px;
   font-weight: 800;
-  color: var(--burgundy-700);
+  color: var(--gold-500);
 }
 
 .category-link {
   font-size: 12px;
   font-weight: 700;
-  color: var(--burgundy-700);
+  color: var(--burgundy-600);
   display: inline-flex;
   align-items: center;
   gap: 4px;
 }
 
+[data-theme="dark"] .category-link {
+  color: var(--gold-300);
+}
+
 /* Featured Highlights Grid */
 .featured-section {
-  background: linear-gradient(180deg, var(--rose-100) 0%, var(--rose-50) 100%);
-  border-top: 1px solid var(--rose-200);
-  border-bottom: 1px solid var(--rose-200);
+  background: var(--bg-section-soft);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .featured-grid {
@@ -226,8 +230,8 @@
 }
 
 .featured-card {
-  background: var(--white);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   overflow: hidden;
   box-shadow: var(--shadow-xs);
@@ -258,12 +262,12 @@
 .featured-card h3 {
   font-size: 20px;
   margin: 4px 0 8px 0;
-  color: var(--burgundy-900);
+  color: var(--text-main);
 }
 
 .featured-card p:not(.eyebrow) {
   font-size: 13px;
-  color: var(--ink-600);
+  color: var(--text-muted);
   margin: 0 0 16px 0;
   line-height: 1.5;
 }
@@ -274,18 +278,18 @@
   justify-content: space-between;
   align-items: center;
   padding-top: 14px;
-  border-top: 1px solid var(--rose-200);
+  border-top: 1px solid var(--border-subtle);
 }
 
 .featured-bottom strong {
   font-size: 18px;
-  color: var(--burgundy-800);
+  color: var(--gold-500);
 }
 
 .service-book {
-  background: var(--rose-50);
-  border: 1px solid var(--rose-300);
-  color: var(--burgundy-800);
+  background: var(--bg-card-alt);
+  border: 1px solid var(--border-subtle);
+  color: var(--text-main);
   padding: 7px 14px;
   border-radius: var(--radius-pill);
   font-size: 12px;
@@ -310,18 +314,18 @@
   grid-template-columns: 1fr 2fr;
   gap: 50px;
   padding: 55px 0;
-  border-top: 1px solid var(--rose-200);
+  border-top: 1px solid var(--border-subtle);
   scroll-margin-top: 120px;
 }
 
 .menu-heading h2 {
   font-size: clamp(30px, 3.5vw, 44px);
-  color: var(--burgundy-900);
+  color: var(--text-main);
   margin: 0 0 10px 0;
 }
 
 .menu-heading p {
-  color: var(--ink-600);
+  color: var(--text-muted);
   font-size: 15px;
 }
 
@@ -333,8 +337,8 @@
 }
 
 .service-row {
-  background: var(--white);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
   padding: 14px 16px;
   display: flex;
@@ -353,7 +357,7 @@
 .service-row dt {
   font-size: 14px;
   font-weight: 700;
-  color: var(--ink-900);
+  color: var(--text-main);
 }
 
 .service-row dd {
@@ -365,15 +369,15 @@
 
 .service-row dd strong {
   font-size: 15px;
-  color: var(--burgundy-700);
+  color: var(--gold-500);
   white-space: nowrap;
 }
 
 /* Steps / Process Section */
 .process-section {
-  background: linear-gradient(180deg, var(--rose-100) 0%, var(--rose-50) 100%);
-  border-top: 1px solid var(--rose-200);
-  border-bottom: 1px solid var(--rose-200);
+  background: var(--bg-section-soft);
+  border-top: 1px solid var(--border-subtle);
+  border-bottom: 1px solid var(--border-subtle);
 }
 
 .steps {
@@ -384,8 +388,8 @@
 }
 
 .steps article {
-  background: var(--white);
-  border: 1px solid var(--rose-200);
+  background: var(--bg-card);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-lg);
   padding: 30px 24px;
   box-shadow: var(--shadow-xs);
@@ -394,7 +398,7 @@
 .steps b {
   font-family: var(--font-serif);
   font-size: 32px;
-  color: var(--gold-600);
+  color: var(--gold-500);
   display: block;
   margin-bottom: 8px;
 }
@@ -402,11 +406,11 @@
 .steps h3 {
   font-size: 20px;
   margin: 0 0 10px 0;
-  color: var(--burgundy-900);
+  color: var(--text-main);
 }
 
 .steps p {
-  color: var(--ink-600);
+  color: var(--text-muted);
   font-size: 14px;
   line-height: 1.55;
   margin: 0;
@@ -419,9 +423,9 @@
 }
 
 .faq details {
-  border: 1px solid var(--rose-200);
+  border: 1px solid var(--border-subtle);
   border-radius: var(--radius-md);
-  background: var(--white);
+  background: var(--bg-card);
   margin-bottom: 12px;
   padding: 16px 20px;
   transition: all var(--transition-fast);
@@ -435,7 +439,7 @@
 .faq summary {
   font-weight: 700;
   font-size: 16px;
-  color: var(--burgundy-950);
+  color: var(--text-main);
   cursor: pointer;
   list-style: none;
   display: flex;
@@ -451,7 +455,7 @@
   content: '+';
   font-size: 20px;
   font-weight: 400;
-  color: var(--gold-600);
+  color: var(--gold-500);
   transition: transform var(--transition-fast);
 }
 
@@ -460,12 +464,12 @@
 }
 
 .faq details p {
-  color: var(--ink-600);
+  color: var(--text-muted);
   font-size: 14px;
   line-height: 1.6;
   margin: 14px 0 0 0;
   padding-top: 12px;
-  border-top: 1px solid var(--rose-100);
+  border-top: 1px solid var(--border-subtle);
 }
 
 /* Responsive adjustments */
